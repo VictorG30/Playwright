@@ -1,0 +1,22 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "example": "playwright test .pom/tests --project='firefox' --headed",
+    "codegen": "playwright codegen 'https://news-showcase-develop.showcase.newspress.app/wp-admin/' --save-storage='dev.json' --browser='firefox'",
+    "exploreNS": "playwright codegen 'https://news-showcase-develop.showcase.newspress.app/wp-admin/' --load-storage='dev.json' --browser='firefox'",
+    "exploreGC": "playwright codegen 'https://nchq-video-preprod.go-vip.net/' --browser='firefox'",
+    "NS": "playwright test .pom/tests --grep @NS --headed --project='chrome'",
+    "NSD": "playwright test .pom/tests --grep @NS --headed --project='chrome' --debug",
+    "GC": "playwright test .pom/tests --grep @GC --headed --project='chrome'",
+    "GCD": "playwright test .pom/tests --grep @GC --headed --project='chrome' --debug"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.20.1"
+  }
+}

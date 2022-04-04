@@ -1,0 +1,195 @@
+{
+  "cookies": [
+    {
+      "name": "did",
+      "value": "s%3Av0%3Ab6f5ccb0-b05a-11ec-8b57-3965e0d09c1d.Glw6YqRXR2FZvAloFV4s1D5%2BDmHz9wDNFzVdfMHvhbo",
+      "domain": "newscorp.auth0.com",
+      "path": "/",
+      "expires": 1680224020,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "did_compat",
+      "value": "s%3Av0%3Ab6f5ccb0-b05a-11ec-8b57-3965e0d09c1d.Glw6YqRXR2FZvAloFV4s1D5%2BDmHz9wDNFzVdfMHvhbo",
+      "domain": "newscorp.auth0.com",
+      "path": "/",
+      "expires": 1680224020,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_csrf",
+      "value": "C4dqt_v5wW-7OEq8yo0vIpkk",
+      "domain": "newscorp.auth0.com",
+      "path": "/usernamepassword/login",
+      "expires": 1649530420,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "auth0",
+      "value": "s%3APgsprIb3P2epdlbICRPKQhNHA1seVUEO.8k5huK3Z1XTOPY0bJQ0zHU5o3KrgLalNOI5S7AydAzA",
+      "domain": "newscorp.auth0.com",
+      "path": "/",
+      "expires": 1648925673,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "auth0_compat",
+      "value": "s%3APgsprIb3P2epdlbICRPKQhNHA1seVUEO.8k5huK3Z1XTOPY0bJQ0zHU5o3KrgLalNOI5S7AydAzA",
+      "domain": "newscorp.auth0.com",
+      "path": "/",
+      "expires": 1648925673,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "t",
+      "value": "slate",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "DT",
+      "value": "DI0Fol5aRdyQLybAl2Nnuh65w",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": 1711738426,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "Okta_Verify_Autopush_-1977604203",
+      "value": "false",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": 1680202449,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "oktaStateToken",
+      "value": "00bNj0WW2rPboKQ0kqhTFfKJqmwNhGMD9J-lbkLEt_",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": 1648666767,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sid",
+      "value": "102ocYgFfexT6icwBC4_GdX_Q",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "proximity_4bab82eb81d56214454d419e33ddab6c",
+      "value": "eyJ6aXAiOiJERUYiLCJwMnMiOiI3T3MtYnFwWTJ4T0dIclowTGRLUm9RIiwicDJjIjoxMDAwLCJ2ZXIiOiIxIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlBCRVMyLUhTNTEyK0EyNTZLVyJ9.QZBSUrlpmHv8sFxGIlUgzgGOJIBBxk59-czOpm7S3UqBSfTnsvIfxw.B0TtdGgwGbn1J8qN.Ck0fuzCaVC9HxphCTEyFviDPpL940ownLIk7hqThPUKyrEqfDQjxFJQ4F9-oMBV1PzrmbfSGIYDBQmPFUBAj1Rken6Ec4VNHNekr-90WqOL25xXCkXOk0butV6bDGRLBvq5cin37t6OvCBAfTOvV9eRCuNDDIzIeJHE2e-je4QtNUA.Jd-u6_d_OtuKliXdogUgiw",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": 1680202472,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "A6425D43F8FEAD0FB16D51C3D7971B9D",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wordpress_test_cookie",
+      "value": "WP%20Cookie%20check",
+      "domain": "news-showcase-develop.showcase.newspress.app",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wordpress_sec_17ffc305ea4009bd7fd2573f123dd098",
+      "value": "vgarcia.consultant%7C1648702475%7CPl1UMJ1DyDZwNjjfI5xWgHWj14xoE1O2QKr3lYB9pau%7C08e549bdf4457389c4119f10d0bf59c9bec5a6768995133d1b9c905bd58f304e",
+      "domain": "news-showcase-develop.showcase.newspress.app",
+      "path": "/wp-content/plugins",
+      "expires": 1648745675,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wordpress_sec_17ffc305ea4009bd7fd2573f123dd098",
+      "value": "vgarcia.consultant%7C1648702475%7CPl1UMJ1DyDZwNjjfI5xWgHWj14xoE1O2QKr3lYB9pau%7C08e549bdf4457389c4119f10d0bf59c9bec5a6768995133d1b9c905bd58f304e",
+      "domain": "news-showcase-develop.showcase.newspress.app",
+      "path": "/wp-admin",
+      "expires": 1648745675,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wordpress_logged_in_17ffc305ea4009bd7fd2573f123dd098",
+      "value": "vgarcia.consultant%7C1648702475%7CPl1UMJ1DyDZwNjjfI5xWgHWj14xoE1O2QKr3lYB9pau%7C355c85d7e2cb608a7df20d83666f799853cf273784c2508458b2a989ce82a6eb",
+      "domain": "news-showcase-develop.showcase.newspress.app",
+      "path": "/",
+      "expires": 1648745675,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "wp-settings-time-3",
+      "value": "1648666476",
+      "domain": "news-showcase-develop.showcase.newspress.app",
+      "path": "/",
+      "expires": 1680202476,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "tk_ai",
+      "value": "jetpack%3A34EYuwp1Hr8vRWdTHTQbX2GL",
+      "domain": "news-showcase-develop.showcase.newspress.app",
+      "path": "/wp-admin",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://login.okta.com",
+      "localStorage": [
+        {
+          "name": "okta_accounts",
+          "value": "[{\"id\":\"https://newscorp.okta.com::vgarcia.consultant@newscorp.com\",\"login\":\"vgarcia.consultant@newscorp.com\",\"displayName\":\"Victor Garcia\",\"origin\":\"https://newscorp.okta.com\",\"lastUpdated\":\"2022-03-30T18:54:31.733Z\"}]"
+        }
+      ]
+    }
+  ]
+}
