@@ -12,7 +12,7 @@ export class loginPage {
   constructor(public readonly page: Page) { }
 
   async gotoURL() {
-    await this.page.goto('https://nchq-video-preprod.go-vip.net/')
+    await this.page.goto('https://news-showcase-develop.showcase.newspress.app/wp-admin/')
   }
 
   async Login(user, password){

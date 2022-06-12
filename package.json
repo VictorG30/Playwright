@@ -9,7 +9,7 @@
     "saveStorageVIP": "playwright codegen 'https://ncu-newspress-gns.go-vip.net/wp-admin/' --save-storage='dev.json' --browser='firefox'",
     "exploreNS": "playwright test .pom/tests --load-storage='dev.json' --browser='firefox'",
     "exploreGC": "playwright codegen 'https://nchq-video-preprod.go-vip.net/' --browser='firefox'",
-    "NS": "playwright test .pom/tests --grep @NS --headed --project='chrome' --repeat-each 100",
+    "NS": "playwright test .pom/tests --grep @NS --headed --project='chrome'",
     "NSD": "playwright test .pom/tests --grep @NS --headed --project='chrome' --debug"
   },
   "keywords": [],
