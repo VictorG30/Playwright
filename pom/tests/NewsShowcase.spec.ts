@@ -19,16 +19,12 @@ test.describe.parallel('Visual automation test', () => {
     await Login.Login("admin@test.com","admin")
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
-    await AddPanel.fillURLandEnter()
+    await AddPanel.fillURLandEnter('https://www.thesun.ie/fabulous/8875095/im-stylist-colour-summer-2022/')
     await AddPanel.fillPanelTitle()
     await AddPanel.fillBullets()
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
-
-    
-    await page.pause()
-
-     
+        
   })
 
 })

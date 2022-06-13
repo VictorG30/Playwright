@@ -24,8 +24,8 @@ export class addGooglePanelPage {
 
   }
 
-  async fillURLandEnter(){
-    await this.page.locator('[data-input-type="ssLink"]').fill('https://www.thesun.ie/fabulous/8875095/im-stylist-colour-summer-2022/');
+  async fillURLandEnter(url){
+    await this.page.locator('[data-input-type="ssLink"]').fill(url);
     await this.page.keyboard.press('Enter');
     await this.imagePreview.click();
 
