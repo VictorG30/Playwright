@@ -25,6 +25,8 @@ export class addGooglePanelPage {
   }
 
   async fillURLandEnter(url){
+    await this.page.locator('.show-data-modal-btn').first().isVisible();
+    await this.page.locator('[data-input-type="ssLink"]').click();
     await this.page.locator('[data-input-type="ssLink"]').fill(url);
     await this.page.keyboard.press('Enter');
     await this.imagePreview.click();
@@ -50,6 +52,7 @@ export class addGooglePanelPage {
   }
 
   async verifyIfPanelIsPublished(){
+    await this.successMessage.click();
     await this.successMessage.isVisible();
 
 

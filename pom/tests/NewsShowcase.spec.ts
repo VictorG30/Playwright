@@ -19,7 +19,7 @@ test.describe.parallel('Visual automation test', () => {
     await Login.Login("admin@test.com","admin")
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
-    await AddPanel.fillURLandEnter('https://www.thesun.ie/fabulous/8875095/im-stylist-colour-summer-2022/')
+    await AddPanel.fillURLandEnter('https://www.thesun.co.uk/tv/soaps/18985304/coronation-street-charlie-de-melo-new-career/')
     await AddPanel.fillPanelTitle()
     await AddPanel.fillBullets()
     await AddPanel.publishPanel()
