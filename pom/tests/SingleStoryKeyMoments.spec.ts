@@ -6,9 +6,9 @@ import {addGooglePanelPage} from './addGooglePanelPage.pom'
 import { allGooglePanels } from './allGooglePanels.pom';
 
 
-test.describe.parallel('Visual automation test', () => {
+test.describe.parallel('Single Story Key Moments', () => {
 
-  test('@NS Create Panel Single Story Bullets, drag and drop.', async ({ page }) => {
+  test.only('@NS Create Panel Single Story Key Moments, drag and drop.', async ({ page }) => {
 
     const Login = new loginPage(page)
     const SideBar = new menuBar(page)
@@ -20,9 +20,10 @@ test.describe.parallel('Visual automation test', () => {
     await Login.Login("admin@test.com","admin")
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('keyMoment')
     await AddPanel.dragAndDropArticle()
-    await AddPanel.fillPanelTitle()
-    await AddPanel.fillBullets()
+    await AddPanel.fillPanelTitle("Key moments by playwright")
+    await AddPanel.fillKeyMoments()
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
        

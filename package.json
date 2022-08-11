@@ -8,9 +8,8 @@
     "saveStorageOkta": "playwright codegen 'https://news-showcase-develop.showcase.newspress.app/wp-admin/' --save-storage='dev.json' --browser='firefox'",
     "saveStorageVIP": "playwright codegen 'https://ncu-newspress-gns.go-vip.net/wp-admin/' --save-storage='dev.json' --browser='firefox'",
     "exploreNS": "playwright test .pom/tests --load-storage='dev.json' --browser='firefox'",
-    "exploreGC": "playwright codegen 'https://nchq-video-preprod.go-vip.net/' --browser='firefox'",
-    "NS": "playwright test .pom/tests --grep @NS --project='chrome' --repeat-each 50 --workers 6",
-    "NSH": "playwright test .pom/tests --grep @NS --headed --project='chrome' --repeat-each 6 --workers 6",
+    "NS": "playwright test .pom/tests --grep @NS --project='firefox' --repeat-each 10 --workers 3",
+    "NSH": "playwright test .pom/tests --grep @NS --headed --project='firefox' --repeat-each 1 --workers 1",
     "NSD": "playwright test .pom/tests --grep @NS --headed --project='chrome' --debug"
   },
   "keywords": [],
