@@ -8,7 +8,7 @@ import { allGooglePanels } from './allGooglePanels.pom';
 
 test.describe.parallel('Single Story Key Moments', () => {
 
-  test('@NS Create Panel Single Story Key Moments, drag and drop.', async ({ page }) => {
+  test.only('@NS Create Panel Single Story Related articles, copy and paste url.', async ({ page }) => {
 
     const Login = new loginPage(page)
     const SideBar = new menuBar(page)
@@ -20,10 +20,11 @@ test.describe.parallel('Single Story Key Moments', () => {
     await Login.Login("admin@test.com","admin")
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
-    await AddPanel.selectTemplate('keyMoment')
+    await AddPanel.selectTemplate('relatedArticle')
+    await AddPanel.fillSummary()
     await AddPanel.dragAndDropArticle()
+    await AddPanel.fillURLandEnter()
     await AddPanel.fillPanelTitle("Key moments by playwright")
-    await AddPanel.fillKeyMoments()
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
        
@@ -36,16 +37,17 @@ test.describe.parallel('Single Story Key Moments', () => {
     const AddPanel = new addGooglePanelPage(page)
     const AllPanels = new allGooglePanels(page)
 
-    var title = 'Panel to delete Key moment'
+    var title = 'Panel to delete Related articles'
 
     await Login.gotoURL()
     await Login.Login("admin@test.com","admin")
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
-    await AddPanel.selectTemplate('keyMoment')
+    await AddPanel.selectTemplate('relatedArticle')
+    await AddPanel.fillSummary()
     await AddPanel.dragAndDropArticle()
+    await AddPanel.fillURLandEnter()
     await AddPanel.fillPanelTitle(title)
-    await AddPanel.fillBullets()
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
     await AddPanel.activateFullScreenModel()
