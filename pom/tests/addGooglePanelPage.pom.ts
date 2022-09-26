@@ -28,12 +28,12 @@ export class addGooglePanelPage {
 
   async dismissModal(){
     await this.closeModal.click()
-    await this.activateSources.click()
+    //await this.activateSources.click()
   }
 
   async activateFullScreenModel(){
-    await this.options.click()
-    await this.btnFullScrenMode.click()
+    //await this.options.click()
+    //await this.btnFullScrenMode.click()
 
   }
 
@@ -44,8 +44,11 @@ export class addGooglePanelPage {
 
   async dragAndDropArticle(){    
     await this.page.waitForLoadState('networkidle')
+    await this.page.waitForLoadState('load')
     await this.page.locator('.show-data-modal-btn').first().isVisible();
-    await this.page.dragAndDrop('.nc-feed-sources-sidebar-card:first-of-type','[for="Panel title"]');
+    //await this.page.dragAndDrop('.nc-feed-sources-sidebar-card:first-of-type','[for="Panel title"]', { force:true });
+    await this.page.locator('.nc-feed-sources-sidebar-card').first().dragTo(this.page.locator('[for="Panel title"]'));
+    await this.page.waitForLoadState('load')
     await this.inputHeadline.fill('Headline')
     await this.inputKicker.fill('')
 
@@ -54,39 +57,52 @@ export class addGooglePanelPage {
   async dragAndDropArticleRD(){    
     await this.page.waitForLoadState('networkidle')
     await this.page.locator('.show-data-modal-btn').first().isVisible();
-    await this.page.dragAndDrop('.nc-feed-sources-sidebar-card:first-of-type','.data-fiels-droppable-zone nth(2)');
-    // await this.page.dragAndDrop('.nc-feed-sources-sidebar-card:first-of-type','[for="Article URL"]:nth-of-type(2)');
-    // await this.page.dragAndDrop('.nc-feed-sources-sidebar-card:first-of-type','[for="Article URL"]:nth-of-type(3)');
+    //await this.page.dragAndDrop('.nc-feed-sources-sidebar-card:first-of-type','.data-fiels-droppable-zone nth(2)', { force:true });
+    await this.page.locator('.nc-feed-sources-sidebar-card').first().dragTo(this.page.locator('[for="Panel title"]'));
     await this.inputHeadline.fill('Headline')
     await this.inputKicker.fill('')
 
   }
 
 
-  async fillURLandEnter(){
-    // await this.page.locator('.show-data-modal-btn').first().isVisible();
-    // await this.page.locator('[data-input-type="ssLink"]').click();
-    // await this.page.locator('[data-input-type="ssLink"]').fill(url);
-    // await this.page.keyboard.press('Enter');
-    // await this.imagePreview.click();
-    // await this.inputHeadline.fill('Headline')
-    const url = 'https://www.marketwatch.com/story/lennar-corp-cl-a-stock-outperforms-competitors-on-strong-trading-day-01660251862-e23a0a8083e2'
+  async fillURLandEnterRA(){
+
+    const url = 'https://www.marketwatch.com/story/german-government-may-nationalize-uniper-to-prevent-collapse-report-11663155076'
     const items = await this.page.locator('[data-input-type="ssRaLink"]');
     const headLines = await this.page.locator('[data-input-type="ssRaTitle"]');
     const kickers = await this.page.locator('[data-input-type="ssRaOverline"]');
     const images = await this.page.locator('.ra-rigth');
 
 
+    for (let i = 0; i < await items.count(); i++) {
+    await items.nth(i).fill(url);
+    await this.page.keyboard.press('Enter');
+    //await this.page.waitForLoadState('networkidle')
+    //await this.page.waitForLoadState('domcontentloaded')
+    await this.page.waitForLoadState('load')
+    await this.page.waitForSelector('.panel-field-loading-message',{state: "hidden"})
+    await images.nth(i).click();
+    await headLines.nth(i).fill('Headline');
+    await kickers.nth(i).fill('Kicker');
+
+
+    }
+  }
+
+  async fillURLandEnterRD(){
+
+    const url = 'https://www.marketwatch.com/story/german-government-may-nationalize-uniper-to-prevent-collapse-report-11663155076'
+    const items = await this.page.locator('[data-input-type="rdRaLink"]');
+    const headLines = await this.page.locator('[data-input-type="rdRaTitle"]');
+    const kickers = await this.page.locator('[data-input-type="rdRaOverline"]');
+
 
 
     for (let i = 0; i < await items.count(); i++) {
     await items.nth(i).fill(url);
     await this.page.keyboard.press('Enter');
-    await this.page.waitForLoadState('networkidle')
-    await this.page.waitForLoadState('domcontentloaded')
     await this.page.waitForLoadState('load')
     await this.page.waitForSelector('.panel-field-loading-message',{state: "hidden"})
-    await images.nth(i).click();
     await headLines.nth(i).fill('Headline');
     await kickers.nth(i).fill('Kicker');
 
@@ -114,19 +130,19 @@ export class addGooglePanelPage {
   async fillArticle(){
 
     await this.page.locator('[data-input-type="ssLink"]').click()
-    await this.page.locator('[data-input-type="ssLink"]').fill('https://www.thesun.ie/tv/9070443/love-island-casa-amor-mollie-cheyanne-jack-jazmine/')
-    await this.page.locator('[data-input-type="ssMediaContent"]').fill('https://www.thesun.ie/tv/9070443/love-island-casa-amor-mollie-cheyanne-jack-jazmine/')
+    await this.page.locator('[data-input-type="ssLink"]').fill('https://www.marketwatch.com/story/german-government-may-nationalize-uniper-to-prevent-collapse-report-11663155076')
+    await this.page.locator('[data-input-type="ssMediaContent"]').fill('https://www.marketwatch.com/story/german-government-may-nationalize-uniper-to-prevent-collapse-report-11663155076')
     await this.inputHeadline.fill('Headline')
 
   }
 
-  async fillPanelTitle(title){
+  async fillPanelTitle(title='Title'){
     await this.inputPanelTitle.fill(title)
 
   }
 
-  async fillPanelTitleRD(){
-    await this.page.locator('[data-input-type="rdPanelTitle"]').fill('Created by playwright')
+  async fillPanelTitleRD(title){
+    await this.page.locator('[data-input-type="rdPanelTitle"]').fill(title)
 
   }
 
@@ -157,11 +173,32 @@ export class addGooglePanelPage {
 
   }
 
+  async addItem(){
+    await this.dropDownTemplate.click();
+    await this.page.locator('.block-list-appender [aria-label="Add NC Google Panel"] svg').click();
+
+  }
+
   async publishPanel(){
     await this.btnPublish.click();
     await this.btnPublishSB.click();
 
   }
+  
+  async schedulePanel(){
+    await this.btnPublish.click();
+    //await this.btnPublishSB.click();
+    await this.page.locator('.editor-post-publish-panel__link >> text=Immediately').click()
+    await this.page.locator('[name="year"]').fill('2023')
+    await this.page.locator('[name="date"]').click()
+    await this.btnPublishSB.click();
+    await expect(this.page.locator('.components-notice__content')).toContainText('scheduled')
+  
+  }
+
+  async verifyIfPanelIsScheduled(){
+    await expect(this.page.locator('.components-notice__content')).toContainText('scheduled')
+    }
 
   async verifyIfPanelIsPublished(){
     await this.successMessage.click();
@@ -170,6 +207,13 @@ export class addGooglePanelPage {
 
   }
 
+  async draftPanel(){
+    await this.page.locator('.editor-post-switch-to-draft').click();
+    await this.page.locator('button', { hasText: 'OK' }).click();
+    await this.page.locator('.components-button.components-notice__dismiss.has-icon').click();
+
+
+  }
 
 
 }

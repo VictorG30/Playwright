@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "example": "playwright test .pom/tests --project='firefox' --headed",
-    "saveStorageOkta": "playwright codegen 'https://news-showcase-develop.showcase.newspress.app/wp-admin/' --save-storage='dev.json' --browser='firefox'",
+    "saveStorageMG": "playwright codegen 'https://mansionglobal.int.pubedit.dowjones.io/wp-admin/' --save-storage='dev.json' --browser='firefox'",
+    "saveStorageMW": "playwright codegen 'https://mw.int.pubedit.dowjones.io/wp-admin/' --save-storage='dev.json' --browser='firefox'",
+    "saveStorageBarrons": "playwright codegen 'https://barrons.int.pubedit.dowjones.io//wp-admin/' --save-storage='dev.json' --browser='firefox'",
     "saveStorageVIP": "playwright codegen 'https://ncu-newspress-gns.go-vip.net/wp-admin/' --save-storage='dev.json' --browser='firefox'",
     "exploreNS": "playwright test .pom/tests --load-storage='dev.json' --browser='firefox'",
-    "NS": "playwright test .pom/tests --grep @NS --project='firefox' --repeat-each 10 --workers 3",
+    "NS": "playwright test .pom/tests --grep @NS --project='firefox' --repeat-each 1 --workers 5",
     "NSH": "playwright test .pom/tests --grep @NS --headed --project='firefox' --repeat-each 1 --workers 1",
-    "NSD": "playwright test .pom/tests --grep @NS --headed --project='chrome' --debug"
+    "NSD": "playwright test .pom/tests --grep @NS --headed --project='firefox' --debug"
   },
   "keywords": [],
   "author": "",

@@ -1,1 +1,254 @@
-{}
+{
+  "cookies": [
+    {
+      "name": "t",
+      "value": "slate",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "DT",
+      "value": "DI1Gokk-pWpQdWoOomFaKGfLQ",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": 1726238948,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "Okta_Verify_Autopush_-1977604203",
+      "value": "false",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": 1694703044,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "oktaStateToken",
+      "value": "00LvYQWv4KgsPtaz48pvQAxLm59ns62bnSzhwMJKwH",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": 1663167353,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sid",
+      "value": "102ArLFSHlxSa-oIrkTk557rg",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "7AA571FD5333D409CEE7AB77A5D631AB",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "proximity_4bab82eb81d56214454d419e33ddab6c",
+      "value": "eyJ6aXAiOiJERUYiLCJwMnMiOiJNa0NSYXNGcjBkOHlWb3h4elpzaGZnIiwicDJjIjoxMDAwLCJ2ZXIiOiIxIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlBCRVMyLUhTNTEyK0EyNTZLVyJ9.YNMeJ7wXCjH9VnSsYY8NPQ9sZajctHzmzTcv5jZOnNA6cDN_Br_aTw.jgskQDjVc1Oa7yag.dkJNSyoEK9_kRlxSzc7tpjrH2qdVpM2aTkq47krQ4x9K_I5iRLrcuq4IABK0MVJuk32-hAUDfvESe4pb7Ab5OT2nvnfIW31y60FIdKxGa6EuAYkkh6f7V65Y5N7lgAhO7TCR21UxzIvdojCve32KCbHrtauB9u6M8BB-56Boui1lzQ.t55baYyDII4mtyRoXaQ0Ew",
+      "domain": "newscorp.okta.com",
+      "path": "/",
+      "expires": 1694703062,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "XSRF-TOKEN",
+      "value": "4e4885c0-d4c2-4775-a8ca-e29501ccd335",
+      "domain": "bgwp-marketwatch-int.auth.us-east-1.amazoncognito.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "cognito",
+      "value": "\"H4sIAAAAAAAAAAEmAdn+f9cVQS+G3OrqQ2auVrCy2LjG9UT42ocPLJ6afLH0db7CfQheNfs/JFPpJYIRJtZgXJkoVltAJo1bBDsFYq0QCMxrGSlgXox5YEfjSBh20RG5b3uAFmUYSpPRKG6j8giOCd+LUgIFnB4FNN39zJBgFvF9tmg7G3yC5adLMRbgDxg15JIOTV+QKzVOCq/mKJO+gd0GKgT1OyrzJD7hgVHris2FH56U7YkXOUxSoix1JOntNz5DHFdObQfnl4oOx513F6bWY0Y00jzsfbSgGZ1j7SIsV8SfBglmzV5zpOdwOWD5hksCI8IWvjLtB669g8rGenAWUqYnS+r6TGxASmjL7wE+SGFrRdewu65SFQT7MFOxi84dWSQrNEIEmMfX3Ioi6+0LQKS0x3rT+yYBAAA=.H4sIAAAAAAAAACuNqpfeeNRFZKGyXuOi7z6q4V7N5Zb83ExTq3zfau9tng0A1/4uayAAAAA=.4\"",
+      "domain": ".bgwp-marketwatch-int.auth.us-east-1.amazoncognito.com",
+      "path": "/",
+      "expires": 1663170659,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSELBAuthSessionCookie-0",
+      "value": "yB+tsapQZNyjc53KDx3Va+Oa+jlxmI2Tk4TYCllwlaEf09hr1x3O4BjmBFESetGz6WacmXK9Jr7X8EKxBFKNKfvfCjYPCj0B02FEOxODq/PZoxLgMNk0TsslXlYMgV61sswkgI80/SaD4hsqAVHnaf8/91SKJqrBN1AUjUF2GytKJVm9KGVl3lzdCcfSTg1Fl/jixxt4HasCwT/RX5K5WyEKQj5bnYJ04e7K5UYAi44DhYgjjj+zoDZ4J4q6YKra8YKtdNb2eIq2dRuKA79qE0vrpe0nv1zRj/YTSTepElzeWcRNumNiElAUBtHRsVUy0m9IzzaB4ahGzY9/be0QB0fbxZZ5ozEdn8FptFBXjA6pKaL41El8iJ7qkW3kwOh2BMtdmEFLgOdLlPq8ynREc5ucBeIbWvjxRqRSVAU/zt/JcVD35/+11k5AmoTP/nmjoBPgWqkS6WpWx7aAAhaaHoTfURY7CIKP/WSOqqwlwJ9jtA66ecNQ4cSvzB1oB89Xeis32vzDmnfF/oVBCTWEh7dHHiP4DB+Y74YIr4QFX0/oFH9633rSFgZk0pZydTaiVWgOaCg2sp/z6FaJcmxprR7+lbeVpIunYWHPym4uIUHEJd6MteAVrFfZO5BA45rk1HrEL19a2lPT28JRR6rLP90Zlv67TKDjnpq6AggDagTMmD2MwI5WXF1zEUHqOHGmfHQ52I7Yy0zQRyYM3yViKDY1Oci4qvXEbX+Ajzre8E67qL/F1m9UpkASoNJdWeTBflyuzpVQbz5Y/0OgctOqGVXFZDZS23NOhyhhPqePpYlQs1xQDP9byyaykOKn7TY32WJQFaUS2VT00zctfO00XI9O8PsAlhglGjT8keG85gUbAbqQlxkbUqJAIAWIFMGTDAMFyj89sl8njtuI1QbWr2GPX6gMoF0e5TM+LSy96XmtQSyEbfMC7qYAlzGztrnrRlyv2Ih56B0HV0xBq5fuKlIRxIGcdje74cKZHhLU3p2PP2R3IKAMeJzx2aBb/BudmzHYXJTaYzKIfbsM7MWzK1SSBGIiWcOz28HVW+h9p1TSfL3qFX4Bb8sdqzV+4qjstb9U3/E0dqyutw8MoXbRFoAuBhuSab2deNON66zoYB9UiaXmupNa/vwLZ25CDnW5YDhfcdZHNO14YXa4SbhtFFYFbLzaQmXAKyuC7eG5rMudEbmDxvlMmZMvY6ZTRYHt+tVP2kkI6/DBuWr1RLWSFxHlqpZLz88JBKk042p09Di2hUBJNfrkfl2uQH96B1jW+o9HDRy4KxbqOPJVAvJgMKDxDj2lQbkDlVJoa2Kim8GSpy9zgPuiqXWKHkmEDjmOlz4bEQkL0JDVemO0iRJcXH6r34+/8dOwMl3CnQ9EXY/kRiPeN0Df3J4jKsX8pmt5hAlzh3Rn+fyDDh2/KPS9ZvIcPGMWaHHiK7CuFcqk/ncHIBtmBMnoL0ZgFzqqa9F3tgpL0ch7R1/SmYFEyiyPvxxTFBD8vdTu/3UX7SCpn+/7Z+M6Ysi7XfIIFFA+BAXaFaUToKnHTE0NppdTDk8g4cI9KXEDjkE3kbMkch97Rduy/S/Sjt6DtSv1zyw1d+kRiYcoQdX+EPDa4DUKjttaZcdBi0qsDdbS1ZqtPUtUzc6ck6x8Zl0osqAJnvIk8HZDb/G93rOXmboXKDHe8r9Bq5r6bxBEotsim7vQSAN+6JPO4KMPNd7uLqApUXSvgSbKHsN1byDJ6bUFBaqXYz7EAKv1tb8X8ybgArz85Me4Nl5G1bDWV3FsmKD6bmqBlEtKTb/P8HaMVb4URQIDNHs8ZvedO3eGnD5RCquO6SrXVJbOokprMk69PRf5Oto+WgPAHv3zCqquDe1o8o1fub+kBlvbz1DgpXHX+IKjDBmEHmU02KxgRz1KZn6pYpLXI/3K+wt05yl33PXfbKMy6S4nzaR2mT74A1vhU3M592GU5iW/FF/tkHymV+r9dOfFgDmRK99P2rOUrSusTgUEyMfVmKjxC9zCh22fJj9C9802BMMavytzd1bhCPGXEvl3iGVU8l143O3nvrUUaPJ0k+hflVG1hGbgoTb0Nb07w+ZkKLMOY8BAtxOtgwMfdxLoN1AkOXmPRdcetPpGdG4xFPjpethsxNkWWScs5gT3atY7jMK4gdUk4Btv7snWYusaQfmnxDDHM9DefW6nxLkfDw8c376Gdtj656cp0USjuvmSp8k878L2xOhd2P7fJB/cdulZ9s/0UXs2NVS+rNhiSHeuhHzK6BAlThos7gCv0EwDiCXyVlErwXJ32qYPHBwXVjdI3wtPQqvE39L+av9o041PfN85MDJ59UbGWBxHOXVJqXuSikROnvsDYbMtw3jfK/P+/4tJ91p7qHpOEGrqgiHFoIbkgj+wWduPMt4le+e6F15s6bxgkVRRhK13Hhy6AQerlc/wIKs/6uM/KERmWt3meuppyLZOZZVU60TKCzmlGC2Dp1yo/XqfY8RCR7WFi3+T+zX22IHpAr3JB5ulvfPVtIMCrqAh++G5y5KsrJog1meGQpsNdV7TVr0tnnnzgfG8F1mXS13+sAc3wfgXsENel/pxLKieo+gsKbEFPF6b5YDgarHuHFv03DpEvY1AJ5BVZyqcxaug0HSwCJmcE+Nvsa9VI4oX4XUUk/c5U47z/k7fZKavKoPdXsLlwc09FG+8kyBfXfDLI5QyLunJ74p2MppjiRD0B0TyVtVXJ7N8y2MCkZhvAKkqmt9Z1qWIXQ4+4NaG1rsU0cZfiEb4COZ1mwdeNgRoI0BoQG1BTql2XGpkb84pJemZ3hkpog35DtB545m1MV1K+2/HDB2HnYUDdJOmEKtZ/PZLD08m9H1rAgjOhw2Gx71AHAjIfXrFvZQzEwRSW8RgR4hd5Zwwnq/ML28iENA/YQ1UdL9hJyJMx9PEnuYLdq6Y8XDdFwJ4a08DUPTmeD47pPI0FjYZvuWpqR3gjvoI52ZjRtJ/O5zkWiqZXHRO5JILQRl5mTTOZtTVI5xpRWLKNo1En8NzOTKiAMgqaIR0KdlEOtYhOtAfYAwZn81o96XmQB6VL4U6JW/R4+nXEWc73qmQt5UKryccqwwRk8XgvlBPuBE0lU2FLPKomUif1W4vKxKWYtcUDDuQqV69Qjs7+kA6uj/fe0wexBV14DMJZHIwlsl7MA/c5fPfZ4ZMTzhoUSnHCfr5i17bNHk7LvdDfVDnPfaodoIU1VWF/MNmq7IW+VQI/kbuADrocWkrqznhEzGIOyLhBS2xq4eREAxVNyiAXVanBZ4PiTr1iM/zXUyrEnqdJ602b4GCpNMMm/wMpM0feHFn0+7/bH1p49lCuq0vPiB4EYActbPWH4dsD8fv/R8xWic+kSssoYVNWdoNRJUrKU/IaqZTihIkafjt0RHbxENtvD+GR1+wMfQmbAp22zgxrO/MNEWofk+SYvkepDImUk8A4ZSBw4PSXE/BTvkRkyieeUWuKxVVfAJsG6zz/VMvyiPy787pAivEyHmQNjpIZea/4KAZKyNBgLjCIOsv8tZrBXs1T1ZnOgaANV/8iRrvdQMjJwx5k+ioyie7nrMIWxHvcIK605PknB8TlUzqWE0KeKWQZJCPWCMMEBeKaVbJXSxUpjQySoJEBQpspe+jezH4R+8qoEYN623elRYYMwJBM7C/QoL+zdA6TGvJRo0FC334+Aq8rX2IYAmpTJCRulix4wTtr1fz3ZhJq+obMMh1DD4jP3oiGHWQBL8Eaex+c2jA0XTlIfn/aFHOVg54yq3txaJLVHd3t6F8TX7Rv/ZL+Ou32zmPoPw5iGai1YRAUFirZ7pF62UqOJJUsCuUbflvdFL3ikClQC0G1R9xqhzhClu51mTJpWEezvgaHVcVA3Vhao4jFhy9vhraDIX4IRnH0lFws9hDI1nV2eFb838M417nhLUULzQhA+IADqcV4vmyld0FXdkAjFZ2R187XSoGTZC/WeIrBP1szdt4l+VA",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1663771860,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSELBAuthSessionCookie-1",
+      "value": "WhOaSOrTm3vXiXSNKRBPzrspMJdZXvWsThRIdernXg39Igdgbck0F3CvekIXLLJ1vdN+mZy4z8rFPZx1BZ+VOrzLDwm0Y/KZYJtP66Wk6I8wC9K7GHJVX3oyXl7akgCs/kF0L1+z9AJYKCOS6Zwy1LEc+NTyRpZcCrzuO6Hu2ytFMGxDvhRAixnSUa1e8Kip35K8njLTt3LoboJ5gJSwDg/Kz5r69bMpY18nXJsiug32m3muqskwxzlH3TjdMOpVrzsEJ35r9W3UAG1gaFOtmopbUDu2AmgqGBgTPE5gB3jy5qPqiUbUGPZ2xSjHag1GPCh/+NCcNkiEQW5W+GUlIKok/Ncu9D0iTU6OhTPJA7gmMU5eG56LcszS1SQjuGofQhTP/enbkzF91oxIt3mKG0LICumk0aT+k3OGsNnPtk1mmD0EGaLaIQK78SlMl8cK8QunlZIhDLpWJRONwKBVTsY15w67sRoxt2bZJHRbjhD8FumQ/Lzy5o0w/+nq9X+KC/ZSKMuIku2vWZkI/9kD019McLR5GJqQXoL//zmGB49CZKhXqdF1eGY=",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1663771860,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wordpress_sec_e2a361178cf991041e38573577ea5dda",
+      "value": "garciavictor%7C1663339860%7CFL0oLMMXnfJG4biX8xzYWLD9zfDVLOS6WacnWWSOnuz%7Cb63894e271986bfab3a338dbb3af8979681da749539a1e7d2f97268523dade39",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/wp-content/plugins",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wordpress_sec_e2a361178cf991041e38573577ea5dda",
+      "value": "garciavictor%7C1663339860%7CFL0oLMMXnfJG4biX8xzYWLD9zfDVLOS6WacnWWSOnuz%7Cb63894e271986bfab3a338dbb3af8979681da749539a1e7d2f97268523dade39",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/wp-admin",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wordpress_logged_in_e2a361178cf991041e38573577ea5dda",
+      "value": "garciavictor%7C1663339860%7CFL0oLMMXnfJG4biX8xzYWLD9zfDVLOS6WacnWWSOnuz%7C3c4451fc3eb671462d613b4f46bf153b16fb6e940297aab6e144687be6a47332",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wp-settings-182",
+      "value": "wpadminlibraryContent%3Dbrowse%26libraryContent%3Dbrowse",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1694703060,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "wp-settings-time-182",
+      "value": "1663167060",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1694703060,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "dj_oidc",
+      "value": "nrd0afshptxbKcw9sJpU_Qf8I6k1TBM9YOCaRfesmwZMiM1wiz8D9Ewrso5HMY_m2NlocgWjt1CKUMefAk6PIR3TMsc6yIICxDGyfT3L-ioSqnTUSS9_LX_y0I9W7JERjeFOijhpEMmkHT0GgwiHbrce-M63_PfuziW20C3Ofia7vn26Stg805Bj5GtxEENiaTjgc29YAU7rU8qinbh6SNDV9wFavT9eONl77SKl0RJ0aOHwW9zKP63kdWLV5yZYXuv-YLMbOrcqLkbCixEJNjKtcM7TmyjjqfFAbLXYfSOTxhfEZJpX44uZw_uP6PMccBS2K47Q3TwJjsERFRlWnw",
+      "domain": "assistant-e.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBTG",
+      "value": "/SpuiduAIjK11knhTebnMgrkXYPwYEa9zRMHjthQ/fO2ahK5fjaYv/AnQeu2wKmqfOUBa4vTHrrJRWTVDol6qKSO1NEoBe8wwDRmYNgK7Ov3rbedxTk/0nnrAiEEYULApd4H5GCcWTdE1sZtzgC/GjpMzbr/4QITIp5rle27awn1",
+      "domain": "assistant-e.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1663771862,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBTGCORS",
+      "value": "/SpuiduAIjK11knhTebnMgrkXYPwYEa9zRMHjthQ/fO2ahK5fjaYv/AnQeu2wKmqfOUBa4vTHrrJRWTVDol6qKSO1NEoBe8wwDRmYNgK7Ov3rbedxTk/0nnrAiEEYULApd4H5GCcWTdE1sZtzgC/GjpMzbr/4QITIp5rle27awn1",
+      "domain": "assistant-e.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1663771862,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALB",
+      "value": "zfzD7rmHzj/u1liGs1noicP/PwARfS16+2PYD+hsDNtepm7XREpCkPHv95i8RaoSztun+14zNedNKrNaYrlw1bDqp0RsCY4rcTtsw6bsTOVV3/P0+ibRDCDY35qh",
+      "domain": "assistant-e.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1663771862,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "zfzD7rmHzj/u1liGs1noicP/PwARfS16+2PYD+hsDNtepm7XREpCkPHv95i8RaoSztun+14zNedNKrNaYrlw1bDqp0RsCY4rcTtsw6bsTOVV3/P0+ibRDCDY35qh",
+      "domain": "assistant-e.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1663771862,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALB",
+      "value": "GJgToN8oAdfYJo381odyml6IhYrYgOtsxje8jAgVtXXIiLa+JPDDVEfEhsTj/8k26H+ZONCrixBbLCyeITf/Qorvq5FYyF+O8P8J6my8T1aWS72JRHxei/Shjp7p",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1663771865,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "GJgToN8oAdfYJo381odyml6IhYrYgOtsxje8jAgVtXXIiLa+JPDDVEfEhsTj/8k26H+ZONCrixBbLCyeITf/Qorvq5FYyF+O8P8J6my8T1aWS72JRHxei/Shjp7p",
+      "domain": "mw.int.pubedit.dowjones.io",
+      "path": "/",
+      "expires": 1663771865,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://login.okta.com",
+      "localStorage": [
+        {
+          "name": "okta_accounts",
+          "value": "[{\"id\":\"https://newscorp.okta.com::vgarcia.consultant@newscorp.com\",\"login\":\"vgarcia.consultant@newscorp.com\",\"displayName\":\"Victor Garcia\",\"origin\":\"https://newscorp.okta.com\",\"lastUpdated\":\"2022-09-14T14:50:58.285Z\"}]"
+        }
+      ]
+    },
+    {
+      "origin": "https://mw.int.pubedit.dowjones.io",
+      "localStorage": [
+        {
+          "name": "WP_DATA_USER_182",
+          "value": "{\"core/interface\":{\"enableItems\":{\"singleEnableItems\":{\"complementaryArea\":{\"core/edit-post\":\"edit-post/document\"}},\"multipleEnableItems\":{}}}}"
+        }
+      ]
+    }
+  ]
+}

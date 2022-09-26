@@ -16,8 +16,7 @@ export class menuBar {
   }
 
   async goToAllGooglePanels(){
-    await this.linkToNewShowcase.click();
-    //await this.linkAllGooglePanels.click();
+    await this.linkAllGooglePanels.click();
   }
 
   async goToAllPreviewPanels(){

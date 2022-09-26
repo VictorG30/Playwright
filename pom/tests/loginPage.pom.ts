@@ -12,15 +12,16 @@ export class loginPage {
   constructor(public readonly page: Page) { }
 
   async gotoURL() {
-    await this.page.goto('https://news-showcase-develop.showcase.newspress.app/wp-admin/')
+    const url='https://mw.int.pubedit.dowjones.io/wp-admin/'
+    await this.page.goto(url)
   }
 
   async Login(user, password){
-    await this.linkToLoGIn.click();
-    await this.inputUsername.fill(user);
-    await this.inputPassword.fill(password);
-    await this.btnLogin.click();
-    await this.avatar.isVisible();
+    // await this.linkToLoGIn.click();
+    // await this.inputUsername.fill(user);
+    // await this.inputPassword.fill(password);
+    // await this.btnLogin.click();
+    // await this.avatar.isVisible();
 
   }
 

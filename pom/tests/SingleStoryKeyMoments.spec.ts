@@ -6,7 +6,7 @@ import {addGooglePanelPage} from './addGooglePanelPage.pom'
 import { allGooglePanels } from './allGooglePanels.pom';
 
 
-test.describe.parallel('Single Story Key Moments', () => {
+test.describe.parallel('Single Story with Key Moments', () => {
 
   test('@NS Create Panel Single Story Key Moments, drag and drop.', async ({ page }) => {
 
@@ -45,7 +45,7 @@ test.describe.parallel('Single Story Key Moments', () => {
     await AddPanel.selectTemplate('keyMoment')
     await AddPanel.dragAndDropArticle()
     await AddPanel.fillPanelTitle(title)
-    await AddPanel.fillBullets()
+    await AddPanel.fillKeyMoments()
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
     await AddPanel.activateFullScreenModel()
