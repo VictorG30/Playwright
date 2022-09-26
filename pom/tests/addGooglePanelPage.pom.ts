@@ -21,6 +21,18 @@ export class addGooglePanelPage {
   dropDownTemplate = this.page.locator('.wp-block-nc-google-panel-list select')
   inputSummary = this.page.locator('[data-input-type="ssSummary"]')
   rBtnKicker = this.page.locator('.panel-field-radio [value="kicker"]')
+  addItemBtn = this.page.locator('.block-list-appender [aria-label="Add NC Google Panel"] svg')
+  btnImmediately = this.page.locator('.editor-post-publish-panel__link >> text=Immediately')
+  inputYear = this.page.locator('[name="year"]')
+  inputDate = this.page.locator('[name="date"]')
+  noticeMessage = this.page.locator('.components-notice__content')
+  btnSwitchToDraft = this.page.locator('.editor-post-switch-to-draft');
+  btnOK = this.page.locator('button', { hasText: 'OK' });
+  inputTitleRD = this.page.locator('[data-input-type="rdPanelTitle"]')
+
+
+
+
 
 
 
@@ -45,8 +57,7 @@ export class addGooglePanelPage {
   async dragAndDropArticle(){    
     await this.page.waitForLoadState('networkidle')
     await this.page.waitForLoadState('load')
-    await this.page.locator('.show-data-modal-btn').first().isVisible();
-    //await this.page.dragAndDrop('.nc-feed-sources-sidebar-card:first-of-type','[for="Panel title"]', { force:true });
+    await expect(this.eyeInformation.first()).toBeVisible;
     await this.page.locator('.nc-feed-sources-sidebar-card').first().dragTo(this.page.locator('[for="Panel title"]'));
     await this.page.waitForLoadState('load')
     await this.inputHeadline.fill('Headline')
@@ -56,8 +67,7 @@ export class addGooglePanelPage {
 
   async dragAndDropArticleRD(){    
     await this.page.waitForLoadState('networkidle')
-    await this.page.locator('.show-data-modal-btn').first().isVisible();
-    //await this.page.dragAndDrop('.nc-feed-sources-sidebar-card:first-of-type','.data-fiels-droppable-zone nth(2)', { force:true });
+    await expect(this.eyeInformation.first()).toBeVisible;
     await this.page.locator('.nc-feed-sources-sidebar-card').first().dragTo(this.page.locator('[for="Panel title"]'));
     await this.inputHeadline.fill('Headline')
     await this.inputKicker.fill('')
@@ -127,14 +137,6 @@ export class addGooglePanelPage {
 
   }
 
-  async fillArticle(){
-
-    await this.page.locator('[data-input-type="ssLink"]').click()
-    await this.page.locator('[data-input-type="ssLink"]').fill('https://www.marketwatch.com/story/german-government-may-nationalize-uniper-to-prevent-collapse-report-11663155076')
-    await this.page.locator('[data-input-type="ssMediaContent"]').fill('https://www.marketwatch.com/story/german-government-may-nationalize-uniper-to-prevent-collapse-report-11663155076')
-    await this.inputHeadline.fill('Headline')
-
-  }
 
   async fillPanelTitle(title='Title'){
     await this.inputPanelTitle.fill(title)
@@ -142,7 +144,7 @@ export class addGooglePanelPage {
   }
 
   async fillPanelTitleRD(title){
-    await this.page.locator('[data-input-type="rdPanelTitle"]').fill(title)
+    await this.inputTitleRD.fill(title)
 
   }
 
@@ -175,7 +177,7 @@ export class addGooglePanelPage {
 
   async addItem(){
     await this.dropDownTemplate.click();
-    await this.page.locator('.block-list-appender [aria-label="Add NC Google Panel"] svg').click();
+    await this.addItemBtn.click();
 
   }
 
@@ -185,19 +187,18 @@ export class addGooglePanelPage {
 
   }
   
-  async schedulePanel(){
+  async schedulePanel(year='2023'){
     await this.btnPublish.click();
-    //await this.btnPublishSB.click();
-    await this.page.locator('.editor-post-publish-panel__link >> text=Immediately').click()
-    await this.page.locator('[name="year"]').fill('2023')
-    await this.page.locator('[name="date"]').click()
+    await this.btnImmediately.click()
+    await this.inputYear.fill(year)
+    await this.inputDate.click()
     await this.btnPublishSB.click();
-    await expect(this.page.locator('.components-notice__content')).toContainText('scheduled')
+    await expect(this.noticeMessage).toContainText('scheduled')
   
   }
 
   async verifyIfPanelIsScheduled(){
-    await expect(this.page.locator('.components-notice__content')).toContainText('scheduled')
+    await expect(this.noticeMessage).toContainText('scheduled')
     }
 
   async verifyIfPanelIsPublished(){
@@ -208,9 +209,9 @@ export class addGooglePanelPage {
   }
 
   async draftPanel(){
-    await this.page.locator('.editor-post-switch-to-draft').click();
-    await this.page.locator('button', { hasText: 'OK' }).click();
-    await this.page.locator('.components-button.components-notice__dismiss.has-icon').click();
+    await this.btnSwitchToDraft.click();
+    await this.btnOK.click();
+    await this.successMessage.click();
 
 
   }

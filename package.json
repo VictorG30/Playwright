@@ -11,7 +11,7 @@
     "saveStorageVIP": "playwright codegen 'https://ncu-newspress-gns.go-vip.net/wp-admin/' --save-storage='dev.json' --browser='firefox'",
     "exploreNS": "playwright test .pom/tests --load-storage='dev.json' --browser='firefox'",
     "NS": "playwright test .pom/tests --grep @NS --project='firefox' --repeat-each 1 --workers 5",
-    "NSH": "playwright test .pom/tests --grep @NS --headed --project='firefox' --repeat-each 1 --workers 1",
+    "NSH": "playwright test .pom/tests --grep @NS --headed --project='firefox' --repeat-each 1 --workers 5",
     "NSD": "playwright test .pom/tests --grep @NS --headed --project='firefox' --debug"
   },
   "keywords": [],
