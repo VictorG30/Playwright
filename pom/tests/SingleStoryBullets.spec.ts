@@ -134,7 +134,7 @@ test.describe.parallel.only('Single story with bullets', () => {
 
   
 
-  test('@NS Kill created Panel Single Story Bullets', async ({ page }) => {
+  test('@NS Kill Created Panel Single Story Bullets', async ({ page }) => {
 
     const Login = new loginPage(page)
     const SideBar = new menuBar(page)
