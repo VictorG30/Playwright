@@ -4,9 +4,16 @@ import {loginPage} from './loginPage.pom';
 import {menuBar} from './menuBar.pom'
 import {addGooglePanelPage} from './addGooglePanelPage.pom'
 import { allGooglePanels } from './allGooglePanels.pom';
+import { hooks } from './hooks';
 
 
 test.describe.parallel('Rundown', () => {
+
+  test.beforeEach(async ({ page }) => {
+    const hook = new hooks(page)
+    hook.catchErrors()
+              
+  })
 
   test('@NS Create Panel rundown, copy and paste url.', async ({ page }) => {
 

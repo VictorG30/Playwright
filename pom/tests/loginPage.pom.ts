@@ -12,8 +12,7 @@ export class loginPage {
   constructor(public readonly page: Page) { }
 
   async gotoURL() {
-    const url='https://mw.int.pubedit.dowjones.io/wp-admin/'
-    await this.page.goto(url)
+    await this.page.goto(process.env.URL)
   }
 
   async Login(user, password){

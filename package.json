@@ -1,18 +1,18 @@
 {
   "name": "playwright",
+  "config": {
+    "url":"https://wsj.int.pubedit.dowjones.io/wp-admin/"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "example": "playwright test .pom/tests --project='firefox' --headed",
-    "saveStorageMG": "playwright codegen 'https://mansionglobal.int.pubedit.dowjones.io/wp-admin/' --save-storage='dev.json' --browser='firefox'",
-    "saveStorageMW": "playwright codegen 'https://mw.int.pubedit.dowjones.io/wp-admin/' --save-storage='dev.json' --browser='firefox'",
-    "saveStorageBarrons": "playwright codegen 'https://barrons.int.pubedit.dowjones.io//wp-admin/' --save-storage='dev.json' --browser='firefox'",
-    "saveStorageVIP": "playwright codegen 'https://ncu-newspress-gns.go-vip.net/wp-admin/' --save-storage='dev.json' --browser='firefox'",
+    "saveStorage": "playwright codegen $npm_package_config_url --save-storage='dev.json' --browser='firefox'",
     "exploreNS": "playwright test .pom/tests --load-storage='dev.json' --browser='firefox'",
-    "NS": "playwright test .pom/tests --grep @NS --project='firefox' --repeat-each 1 --workers 5",
-    "NSH": "playwright test .pom/tests --grep @NS --headed --project='firefox' --repeat-each 1 --workers 5",
-    "NSD": "playwright test .pom/tests --grep @NS --headed --project='firefox' --debug"
+    "NS": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --project='firefox' --repeat-each 1 --workers 5",
+    "NSH": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --headed --project='firefox' --repeat-each 1 --workers 1",
+    "NSD": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --headed --project='firefox' --debug"
   },
   "keywords": [],
   "author": "",

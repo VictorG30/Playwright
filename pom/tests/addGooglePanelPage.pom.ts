@@ -11,6 +11,7 @@ export class addGooglePanelPage {
   inputArticleUrl = this.page.locator('[data-input-type="ssLink"]')
   inputPanelTitle = this.page.locator('[data-input-type="ssPanelTitle"]')
   btnPublish = this.page.locator('.editor-post-publish-panel__toggle')
+  btnUpdated = this.page.locator('.components-button.editor-post-publish-button')
   btnPublishSB = this.page.locator('.editor-post-publish-button.editor-post-publish-button__button')
   imagePreview = this.page.locator('.panel-media-img')
   successMessage = this.page.locator('.components-notice.is-success.is-dismissible')
@@ -29,9 +30,8 @@ export class addGooglePanelPage {
   btnSwitchToDraft = this.page.locator('.editor-post-switch-to-draft');
   btnOK = this.page.locator('button', { hasText: 'OK' });
   inputTitleRD = this.page.locator('[data-input-type="rdPanelTitle"]')
-
-
-
+  linkToPanel = this.page.locator('.row-title')
+  inputByLine = this.page.locator('[data-input-type="ssAuthorName"]')
 
 
 
@@ -40,12 +40,12 @@ export class addGooglePanelPage {
 
   async dismissModal(){
     await this.closeModal.click()
-    //await this.activateSources.click()
+    await this.activateSources.click()
   }
 
   async activateFullScreenModel(){
-    //await this.options.click()
-    //await this.btnFullScrenMode.click()
+    await this.options.click()
+    await this.btnFullScrenMode.click()
 
   }
 
@@ -58,10 +58,21 @@ export class addGooglePanelPage {
     await this.page.waitForLoadState('networkidle')
     await this.page.waitForLoadState('load')
     await expect(this.eyeInformation.first()).toBeVisible;
-    await this.page.locator('.nc-feed-sources-sidebar-card').first().dragTo(this.page.locator('[for="Panel title"]'));
+    await expect(this.activateSources.first()).toBeVisible;
+
+    const items = await this.page.locator('.components-drop-zone');
+    for (let i = 0; i < await items.count(); i++) {   
+          if(i!=1)      
+          await this.page.locator('.nc-feed-sources-sidebar-card').nth(i).dragTo(items.nth(i), {force: true})
+        }
+        
     await this.page.waitForLoadState('load')
+    await this.page.waitForLoadState('networkidle')
     await this.inputHeadline.fill('Headline')
     await this.inputKicker.fill('')
+    await this.inputByLine.fill('')
+
+
 
   }
 
@@ -71,13 +82,15 @@ export class addGooglePanelPage {
     await this.page.locator('.nc-feed-sources-sidebar-card').first().dragTo(this.page.locator('[for="Panel title"]'));
     await this.inputHeadline.fill('Headline')
     await this.inputKicker.fill('')
+    await this.inputByLine.fill('')
+
 
   }
 
 
   async fillURLandEnterRA(){
 
-    const url = 'https://www.marketwatch.com/story/german-government-may-nationalize-uniper-to-prevent-collapse-report-11663155076'
+    const url = 'https://www.wsj.com/articles/russia-prepares-treaties-to-annex-ukrainian-land-11664536196'
     const items = await this.page.locator('[data-input-type="ssRaLink"]');
     const headLines = await this.page.locator('[data-input-type="ssRaTitle"]');
     const kickers = await this.page.locator('[data-input-type="ssRaOverline"]');
@@ -101,7 +114,7 @@ export class addGooglePanelPage {
 
   async fillURLandEnterRD(){
 
-    const url = 'https://www.marketwatch.com/story/german-government-may-nationalize-uniper-to-prevent-collapse-report-11663155076'
+    const url = 'https://www.wsj.com/articles/russia-prepares-treaties-to-annex-ukrainian-land-11664536196'
     const items = await this.page.locator('[data-input-type="rdRaLink"]');
     const headLines = await this.page.locator('[data-input-type="rdRaTitle"]');
     const kickers = await this.page.locator('[data-input-type="rdRaOverline"]');
@@ -131,6 +144,8 @@ export class addGooglePanelPage {
       await images.nth(i).click();
       await headLines.nth(i).fill('Headline');
       await kickers.nth(i).fill('Kicker');
+      await this.inputByLine.fill('')
+
   
   
       }
@@ -186,6 +201,14 @@ export class addGooglePanelPage {
     await this.btnPublishSB.click();
 
   }
+
+  async updatePanel(text='Updated'){
+    await this.linkToPanel.first().click()
+    await this.inputPanelTitle.fill(text)
+    await this.btnUpdated.click();
+
+
+  }
   
   async schedulePanel(year='2023'){
     await this.btnPublish.click();
@@ -203,15 +226,29 @@ export class addGooglePanelPage {
 
   async verifyIfPanelIsPublished(){
     await this.successMessage.click();
-    await this.successMessage.isVisible();
+    await expect(this.successMessage).toBeVisible;
+
+  }
+
+  async verifyIfPanelIsKilled(){
+    await this.successMessage.click();
+    await expect(this.successMessage).toHaveText('Saved');
+
+  }
+
+  async verifyIfPanelIsUpdated(){
+    await expect(this.inputPanelTitle).toHaveText('Updated')
+
 
 
   }
 
   async draftPanel(){
     await this.btnSwitchToDraft.click();
-    await this.btnOK.click();
-    await this.successMessage.click();
+    //await this.btnOK.click();
+
+    //await this.page.getByRole('button').click();
+    //await this.successMessage.click();
 
 
   }

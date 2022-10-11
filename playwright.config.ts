@@ -1,7 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
-const timeout = 60000
+const timeout = 15000
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -14,7 +14,7 @@ const timeout = 60000
 const config: PlaywrightTestConfig = {
   testDir: './pom/tests',
   /* Maximum time one test can run for. */
-  timeout: 120000,
+  timeout: 60000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.

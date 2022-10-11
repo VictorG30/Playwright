@@ -17,6 +17,8 @@ export class allGooglePanels {
   async searchPanels(text){
     await this.inputSearchPanels.fill(text);
     await this.btnSearchPanels.click();
+    await this.page.waitForLoadState('networkidle')
+    await this.page.waitForLoadState('load')
     await this.column.waitFor();
 
   }
@@ -29,7 +31,7 @@ export class allGooglePanels {
   }
 
   async verifyDeletePanel(){
-    await this.notFoundMsg.isVisible
+    await expect(this.notFoundMsg).toBeVisible()
   }
 
 

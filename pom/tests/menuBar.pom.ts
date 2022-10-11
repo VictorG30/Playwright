@@ -6,7 +6,7 @@ export class menuBar {
   linkToNewShowcase = this.page.locator('#menu-posts-wp-nc-google-panel');
   linkAddGooglePanels = this.page.locator('[href="post-new.php?post_type=wp-nc-google-panel"]');
   linkAllGooglePanels = this.page.locator('[href="edit.php?post_type=wp-nc-google-panel"]')
-  linkPreviewGooglePanels = this.page.locator('[href="edit.php?post_type=wp-nc-google-panel&page=previews_list"]')
+  linkPreviewGooglePanels = this.page.locator('[href="edit.php?post_type=wp-nc-google-panel&page=wp_nc_previews_list"]')
 
   constructor(public readonly page: Page) { }
 
@@ -24,6 +24,14 @@ export class menuBar {
     await this.linkPreviewGooglePanels.click();
   }
 
+  async catchErrors(){
+    this.page.on("console", message => {
+      if (message.type() === "error") {
+        console.log(message.location().url)
+          expect(message.location().url).not.toContain('ncu-newspress-gns')            
+      }
+    })     
+  }
   
 
 

@@ -4,9 +4,16 @@ import {loginPage} from './loginPage.pom';
 import {menuBar} from './menuBar.pom'
 import {addGooglePanelPage} from './addGooglePanelPage.pom'
 import { allGooglePanels } from './allGooglePanels.pom';
+import { hooks } from './hooks';
 
 
 test.describe.parallel('Single Story Related articles', () => {
+
+  test.beforeEach(async ({ page }) => {
+    const hook = new hooks(page)
+    hook.catchErrors()
+              
+  })
 
   test('@NS Create Panel Single Story Related articles, copy and paste url.', async ({ page }) => {
 
