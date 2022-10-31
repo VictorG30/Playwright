@@ -24,7 +24,7 @@ test.describe.parallel('Rundown', () => {
 
 
     await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
+    await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await page.locator('select').first().selectOption('rundown')
@@ -45,7 +45,7 @@ test.describe.parallel('Rundown', () => {
     var title = 'Panel to delete Rundown'
 
     await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
+    await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await page.locator('select').first().selectOption('rundown')
@@ -71,7 +71,7 @@ test.describe.parallel('Rundown', () => {
 
 
     await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
+    await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await page.locator('select').first().selectOption('rundown')

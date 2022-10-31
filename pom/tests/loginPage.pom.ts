@@ -15,7 +15,7 @@ export class loginPage {
     await this.page.goto(process.env.URL)
   }
 
-  async Login(user, password){
+  async Login(user='editor@test.com', password='editor'){
     // await this.linkToLoGIn.click();
     // await this.inputUsername.fill(user);
     // await this.inputPassword.fill(password);

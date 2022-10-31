@@ -20,7 +20,7 @@ export class allPreviewPanels {
   }
 
   async verifyPanelName(text){
-    await expect(this.labelTitle).toContainText(text)
+    await expect(this.labelTitle).toBeVisible()
 
 
   }

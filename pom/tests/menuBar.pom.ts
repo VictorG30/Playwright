@@ -3,10 +3,10 @@ import {Page, expect} from '@playwright/test';
 
 export class menuBar {
 
-  linkToNewShowcase = this.page.locator('#menu-posts-wp-nc-google-panel');
-  linkAddGooglePanels = this.page.locator('[href="post-new.php?post_type=wp-nc-google-panel"]');
+  linkToNewShowcase = this.page.locator('#menu-posts-wp-nc-google-panel').first()
+  linkAddGooglePanels = this.page.locator('[href="post-new.php?post_type=wp-nc-google-panel"]').first()
   linkAllGooglePanels = this.page.locator('[href="edit.php?post_type=wp-nc-google-panel"]')
-  linkPreviewGooglePanels = this.page.locator('[href="edit.php?post_type=wp-nc-google-panel&page=wp_nc_previews_list"]')
+  linkPreviewGooglePanels = this.page.locator('[href="edit.php?post_type=wp-nc-google-panel&page=wp_nc_previews_list"]').first()
 
   constructor(public readonly page: Page) { }
 
@@ -16,7 +16,7 @@ export class menuBar {
   }
 
   async goToAllGooglePanels(){
-    await this.linkAllGooglePanels.click();
+    await this.linkAllGooglePanels.click({force:true});
   }
 
   async goToAllPreviewPanels(){

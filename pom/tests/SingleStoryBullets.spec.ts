@@ -8,24 +8,31 @@ import { hooks } from './hooks';
 import { allPreviewPanels } from './allPreviewPanels.pom';
 
 
-test.describe.parallel.only('Single story with bullets', () => {
+test.describe.parallel('Panel single story with bullets', () => {
+  let hook
+  let Login
+  let SideBar
+  let AddPanel
+  let AllPanels
+  let PreviewPanels
 
   test.beforeEach(async ({ page }) => {
-    const hook = new hooks(page)
+    hook = new hooks(page)
+    Login = new loginPage(page)
+    SideBar = new menuBar(page)
+    AddPanel = new addGooglePanelPage(page)
+    AllPanels = new allGooglePanels(page)
+    PreviewPanels = new allPreviewPanels(page)
+
     hook.catchErrors()
               
   })
 
-  test('@NS Create Panel Single Story Bullets, drag and drop.', async ({ page }) => {
-
-    const Login = new loginPage(page)
-    const SideBar = new menuBar(page)
-    const AddPanel = new addGooglePanelPage(page)
-    const AllPanel = new allGooglePanels(page)
-          
-
+  test('@NS Create Panel Single story bullets, drag and drop.', async ({ page }) => {
+         
+    const title = 'SS Drag and Drop'
     await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
+    await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await AddPanel.dragAndDropArticle()
@@ -35,16 +42,27 @@ test.describe.parallel.only('Single story with bullets', () => {
        
   })
 
-  test('@NS Update Panel Single Story Bullets, drag and drop.', async ({ page }) => {
+  test('@NS Create Panel Single story bullets, copy and paste.', async ({ page }) => {
+         
+    const title = 'SS Copy and Paste'
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.fillURLandEnter()
+    await AddPanel.fillPanelTitle(title)
+    await AddPanel.publishPanel()
+    await AddPanel.verifyIfPanelIsPublished()
+       
+  })
 
-    const Login = new loginPage(page)
-    const SideBar = new menuBar(page)
-    const AddPanel = new addGooglePanelPage(page)
-    const AllPanels = new allGooglePanels(page)          
-    const title = "Panel to update"
+  test('@NS Update Panel Single Story Bullets.', async ({ page }) => {
+     
+    const title = "SS to Update"
 
     await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
+    await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await AddPanel.dragAndDropArticle()
@@ -57,22 +75,16 @@ test.describe.parallel.only('Single story with bullets', () => {
     await AddPanel.updatePanel()
     await AddPanel.verifyIfPanelIsPublished()
     await AddPanel.verifyIfPanelIsUpdated()
-
-
        
   })
 
 
-  test('@NS Create Panel Single Story Bullets, adding item.', async ({ page }) => {
+  test('@NS Create Panel Single Story bullets, adding item.', async ({ page }) => {
 
-    const Login = new loginPage(page)
-    const SideBar = new menuBar(page)
-    const AddPanel = new addGooglePanelPage(page)
-    const AllPanel = new allGooglePanels(page)
     const title = "SS Adding item"
 
     await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
+    await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await AddPanel.addItem()
@@ -83,16 +95,12 @@ test.describe.parallel.only('Single story with bullets', () => {
        
   })
 
-  test('@NS Delete Panel Single Story Bullets, drag and drop.', async ({ page }) => {
+  test('@NS Delete Panel Single Story Bullets.', async ({ page }) => {
 
-    const Login = new loginPage(page)
-    const SideBar = new menuBar(page)
-    const AddPanel = new addGooglePanelPage(page)
-    const AllPanels = new allGooglePanels(page)
-    const title= 'SS Bullets to delete'
+    const title= 'SS to delete'
 
     await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
+    await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await AddPanel.dragAndDropArticle()
@@ -107,17 +115,45 @@ test.describe.parallel.only('Single story with bullets', () => {
   
   })
 
-  test('@NS Search panel Panel Single Story Bullets on preview panels', async ({ page }) => {
+ 
 
-    const Login = new loginPage(page)
-    const SideBar = new menuBar(page)
-    const AddPanel = new addGooglePanelPage(page)
-    const AllPanels = new allGooglePanels(page)
-    const PreviewPanels = new allPreviewPanels(page)
-    const title= 'Preview Panels'
+  test('@NS Kill Created Panel Single Story Bullets', async ({ page }) => {
+
+    const title= 'SS Killed'
 
     await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.fillPanelTitle(title)
+    await AddPanel.publishPanel()
+    await AddPanel.verifyIfPanelIsPublished()
+    await AddPanel.draftPanel()
+    await AddPanel.verifyIfPanelIsPublished()
+        
+  })
+
+  test('@NS Scheduled Panel Single story bullets.', async ({ page }) => {
+         
+    const title = 'SS Scheduled'
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.fillPanelTitle()
+    await AddPanel.schedulePanel()
+    await AddPanel.verifyIfPanelIsScheduled()
+       
+  })
+
+  test('@NS Search Panel Single Story Bullets on preview panels', async ({ page }) => {
+
+    const title= 'SS Preview'
+
+    await Login.gotoURL()
+    await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await AddPanel.dragAndDropArticle()
@@ -130,32 +166,6 @@ test.describe.parallel.only('Single story with bullets', () => {
     await PreviewPanels.verifyPanelName(title)
 
   
-  })
-
-  
-
-  test('@NS Kill Created Panel Single Story Bullets', async ({ page }) => {
-
-    const Login = new loginPage(page)
-    const SideBar = new menuBar(page)
-    const AddPanel = new addGooglePanelPage(page)
-    const title= 'Killed panel'
-
-
-
-    await Login.gotoURL()
-    await Login.Login("admin@test.com","admin")
-    await SideBar.goToAddPanel()
-    await AddPanel.dismissModal()
-    await AddPanel.dragAndDropArticle()
-    await AddPanel.fillPanelTitle(title)
-    await AddPanel.publishPanel()
-    await AddPanel.verifyIfPanelIsPublished()
-    await AddPanel.draftPanel()
-    await AddPanel.verifyIfPanelIsPublished()
-
-
-        
   })
 
 })

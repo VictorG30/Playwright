@@ -8,15 +8,15 @@ export class addGooglePanelPage {
   closeModal = this.page.locator('[aria-label="Close dialog"]')
   activateSources = this.page.locator('[aria-label="NC Feed Sources"]')
   eyeInformation = this.page.locator('.show-data-modal-btn')
-  inputArticleUrl = this.page.locator('[data-input-type="ssLink"]')
+  inputArticleUrl = this.page.locator('[for="Article URL"] ~ input')
   inputPanelTitle = this.page.locator('[data-input-type="ssPanelTitle"]')
   btnPublish = this.page.locator('.editor-post-publish-panel__toggle')
   btnUpdated = this.page.locator('.components-button.editor-post-publish-button')
   btnPublishSB = this.page.locator('.editor-post-publish-button.editor-post-publish-button__button')
   imagePreview = this.page.locator('.panel-media-img')
   successMessage = this.page.locator('.components-notice.is-success.is-dismissible')
-  inputHeadline = this.page.locator('[data-input-type="ssTitle"]')
-  inputKicker = this.page.locator('[data-input-type="ssOverline"]')
+  inputHeadline = this.page.locator('[for="Headline"] ~ textarea')
+  inputKicker = this.page.locator('[for="Kicker"] ~ textarea')
   options = this.page.locator('.edit-post-header__settings [aria-label="Options"]')
   btnFullScrenMode = this.page.locator('.components-menu-item__item >> text=Fullscreen mode')
   dropDownTemplate = this.page.locator('.wp-block-nc-google-panel-list select')
@@ -31,19 +31,34 @@ export class addGooglePanelPage {
   btnOK = this.page.locator('button', { hasText: 'OK' });
   inputTitleRD = this.page.locator('[data-input-type="rdPanelTitle"]')
   linkToPanel = this.page.locator('.row-title')
-  inputByLine = this.page.locator('[data-input-type="ssAuthorName"]')
+  inputByLine = this.page.locator('[for="Byline"] ~ textarea')
+  linkShowcase = this.page.locator('.wp-menu-name >> text=News Showcase')
+
+
+  url = 'https://www.barrons.com/articles/brazils-colorful-fishing-village-trancoso-is-boomingjust-ask-anderson-cooper-01667225906'
 
 
 
 
-  constructor(public readonly page: Page) { }
+  constructor(public readonly page: Page) {
+
+   }
 
   async dismissModal(){
+    await this.page.waitForLoadState('networkidle')
     await this.closeModal.click()
+    let status = await this.eyeInformation.first().isVisible()
+
+    if (status!=true)
     await this.activateSources.click()
+
   }
 
   async activateFullScreenModel(){
+
+    let status = await this.linkShowcase.isVisible()
+
+    if (status!=true)
     await this.options.click()
     await this.btnFullScrenMode.click()
 
@@ -64,13 +79,13 @@ export class addGooglePanelPage {
     for (let i = 0; i < await items.count(); i++) {   
           if(i!=1)      
           await this.page.locator('.nc-feed-sources-sidebar-card').nth(i).dragTo(items.nth(i), {force: true})
+          await this.page.waitForLoadState('load')
+          await this.inputKicker.nth(i-1).fill('Kicker')
+          await this.inputHeadline.nth(i-1).fill('Headline')
+
         }
         
-    await this.page.waitForLoadState('load')
-    await this.page.waitForLoadState('networkidle')
-    await this.inputHeadline.fill('Headline')
-    await this.inputKicker.fill('')
-    await this.inputByLine.fill('')
+
 
 
 
@@ -88,23 +103,19 @@ export class addGooglePanelPage {
   }
 
 
-  async fillURLandEnterRA(){
+  async fillURLandEnter(){
 
-    const url = 'https://www.wsj.com/articles/russia-prepares-treaties-to-annex-ukrainian-land-11664536196'
-    const items = await this.page.locator('[data-input-type="ssRaLink"]');
-    const headLines = await this.page.locator('[data-input-type="ssRaTitle"]');
-    const kickers = await this.page.locator('[data-input-type="ssRaOverline"]');
-    const images = await this.page.locator('.ra-rigth');
+
+    const items = await this.inputArticleUrl;
+    const headLines = await this.inputHeadline;
+    const kickers = await this.inputKicker;
 
 
     for (let i = 0; i < await items.count(); i++) {
-    await items.nth(i).fill(url);
+    await items.nth(i).fill(this.url);
     await this.page.keyboard.press('Enter');
-    //await this.page.waitForLoadState('networkidle')
-    //await this.page.waitForLoadState('domcontentloaded')
     await this.page.waitForLoadState('load')
     await this.page.waitForSelector('.panel-field-loading-message',{state: "hidden"})
-    await images.nth(i).click();
     await headLines.nth(i).fill('Headline');
     await kickers.nth(i).fill('Kicker');
 
@@ -114,7 +125,6 @@ export class addGooglePanelPage {
 
   async fillURLandEnterRD(){
 
-    const url = 'https://www.wsj.com/articles/russia-prepares-treaties-to-annex-ukrainian-land-11664536196'
     const items = await this.page.locator('[data-input-type="rdRaLink"]');
     const headLines = await this.page.locator('[data-input-type="rdRaTitle"]');
     const kickers = await this.page.locator('[data-input-type="rdRaOverline"]');
@@ -122,7 +132,7 @@ export class addGooglePanelPage {
 
 
     for (let i = 0; i < await items.count(); i++) {
-    await items.nth(i).fill(url);
+    await items.nth(i).fill(this.url);
     await this.page.keyboard.press('Enter');
     await this.page.waitForLoadState('load')
     await this.page.waitForSelector('.panel-field-loading-message',{state: "hidden"})

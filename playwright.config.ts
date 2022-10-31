@@ -1,7 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
-const timeout = 15000
+const timeout = 20000
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -25,7 +25,7 @@ const config: PlaywrightTestConfig = {
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 1 : 0,
+  retries: process.env.CI ? 1 : 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
