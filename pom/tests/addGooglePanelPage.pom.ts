@@ -69,6 +69,30 @@ export class addGooglePanelPage {
 
   }
 
+  async fillKickers(){
+    let statuskicker = await this.inputKicker.first().isVisible()
+
+    if(statuskicker===true){
+    let kickers = await this.inputKicker;
+        for (let i = 0; i < await kickers.count(); i++) {
+          await this.inputKicker.nth(i).fill('kicker')
+          await this.page.waitForLoadState('load')
+    }
+    }
+  }
+
+  async fillHeadLines(){
+    let statusHeadline = await this.inputHeadline.first().isVisible()
+
+    if(statusHeadline===true){
+      let headlines = await this.inputHeadline;
+      for (let j = 0; j < await headlines.count(); j++) {
+        await this.inputHeadline.nth(j).fill('HeadLine')
+        await this.page.waitForLoadState('load')
+      }
+      }
+  }
+
   async dragAndDropArticle(){    
     await this.page.waitForLoadState('networkidle')
     await this.page.waitForLoadState('load')
@@ -80,89 +104,29 @@ export class addGooglePanelPage {
           if(i!=1)      
           await this.page.locator('.nc-feed-sources-sidebar-card').nth(i).dragTo(items.nth(i), {force: true})
           await this.page.waitForLoadState('load')
-          await this.inputKicker.nth(i-1).fill('Kicker')
-          await this.inputHeadline.nth(i-1).fill('Headline')
-
         }
+
+        await this.fillKickers()
+        await this.fillHeadLines()
         
-
-
-
-
   }
-
-  async dragAndDropArticleRD(){    
-    await this.page.waitForLoadState('networkidle')
-    await expect(this.eyeInformation.first()).toBeVisible;
-    await this.page.locator('.nc-feed-sources-sidebar-card').first().dragTo(this.page.locator('[for="Panel title"]'));
-    await this.inputHeadline.fill('Headline')
-    await this.inputKicker.fill('')
-    await this.inputByLine.fill('')
-
-
-  }
-
 
   async fillURLandEnter(){
 
 
     const items = await this.inputArticleUrl;
-    const headLines = await this.inputHeadline;
-    const kickers = await this.inputKicker;
-
 
     for (let i = 0; i < await items.count(); i++) {
     await items.nth(i).fill(this.url);
     await this.page.keyboard.press('Enter');
     await this.page.waitForLoadState('load')
     await this.page.waitForSelector('.panel-field-loading-message',{state: "hidden"})
-    await headLines.nth(i).fill('Headline');
-    await kickers.nth(i).fill('Kicker');
-
-
-    }
+    }    
+    await this.fillKickers()
+    await this.fillHeadLines()
+    
   }
-
-  async fillURLandEnterRD(){
-
-    const items = await this.page.locator('[data-input-type="rdRaLink"]');
-    const headLines = await this.page.locator('[data-input-type="rdRaTitle"]');
-    const kickers = await this.page.locator('[data-input-type="rdRaOverline"]');
-
-
-
-    for (let i = 0; i < await items.count(); i++) {
-    await items.nth(i).fill(this.url);
-    await this.page.keyboard.press('Enter');
-    await this.page.waitForLoadState('load')
-    await this.page.waitForSelector('.panel-field-loading-message',{state: "hidden"})
-    await headLines.nth(i).fill('Headline');
-    await kickers.nth(i).fill('Kicker');
-
-
-    }
-  }
-
-  async cleanFields(){
-    const headLines = await this.page.locator('[data-input-type="ssRaTitle"]');
-    const kickers = await this.page.locator('[data-input-type="ssRaOverline"]');
-    const images = await this.page.locator('.ra-rigth');
-
-    for (let i = 0; i < await headLines.count(); i++) {
-      
-
-      await images.nth(i).click();
-      await headLines.nth(i).fill('Headline');
-      await kickers.nth(i).fill('Kicker');
-      await this.inputByLine.fill('')
-
-  
-  
-      }
-
-  }
-
-
+ 
   async fillPanelTitle(title='Title'){
     await this.inputPanelTitle.fill(title)
 

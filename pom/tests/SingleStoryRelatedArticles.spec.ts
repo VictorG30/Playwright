@@ -9,7 +9,7 @@ import { allPreviewPanels } from './allPreviewPanels.pom';
 
 
 
-test.describe.parallel.only('Single Story Related articles', () => {
+test.describe.parallel('Single Story Related articles', () => {
     let hook
     let Login
     let SideBar
@@ -162,7 +162,7 @@ test.describe.parallel.only('Single Story Related articles', () => {
 
   test('@NS Search Panel Single Story Related articles.', async ({ page }) => {
 
-    const title = 'Related articles, drag and drop'
+    const title = 'Related articles, preview'
 
     await Login.gotoURL()
     await Login.Login()

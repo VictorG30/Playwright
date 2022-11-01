@@ -10,8 +10,8 @@
     "example": "playwright test .pom/tests --project='firefox' --headed",
     "saveStorage": "playwright codegen $npm_package_config_url --save-storage='dev.json' --browser='firefox'",
     "exploreNS": "playwright test .pom/tests --load-storage='dev.json' --browser='firefox'",
-    "NS": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --project='firefox' --repeat-each 1 --workers 5",
-    "NSH": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --headed --project='firefox' --repeat-each 1 --workers 5",
+    "NS": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --project='firefox' --repeat-each 1 --workers 3",
+    "NSH": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --headed --project='firefox' --repeat-each 1 --workers 3",
     "NSD": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --headed --project='firefox' --debug"
   },
   "keywords": [],
