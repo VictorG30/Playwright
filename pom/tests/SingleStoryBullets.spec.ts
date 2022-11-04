@@ -168,4 +168,18 @@ test.describe.parallel('Panel single story with bullets', () => {
   
   })
 
+
+  test.only('@NS Create Panel Single story without title.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.publishPanel()
+    await AddPanel.verifyIfPanelIsPublished()
+       
+  })
+
 })

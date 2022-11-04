@@ -72,7 +72,6 @@ test.describe.parallel('Single Story with Key Moments', () => {
     await AddPanel.dismissModal()
     await AddPanel.selectTemplate('keyMoment')
     await AddPanel.dragAndDropArticle()
-    await AddPanel.fillURLandEnter()
     await AddPanel.fillPanelTitle(title)
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
@@ -174,6 +173,20 @@ test.describe.parallel('Single Story with Key Moments', () => {
     await PreviewPanels.searchPanels(title)
     await PreviewPanels.verifyPanelName(title)
   
+  })
+
+
+  test.only('@NS Create Panel Single Story Key Moments, without title.', async ({ page }) => {
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('keyMoment')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.publishPanel()
+    await AddPanel.verifyIfPanelIsPublished()
+       
   })
 
 })

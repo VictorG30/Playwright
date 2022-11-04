@@ -9,12 +9,13 @@ export class addGooglePanelPage {
   activateSources = this.page.locator('[aria-label="NC Feed Sources"]')
   eyeInformation = this.page.locator('.show-data-modal-btn')
   inputArticleUrl = this.page.locator('[for="Article URL"] ~ input')
-  inputPanelTitle = this.page.locator('[data-input-type="ssPanelTitle"]')
+  inputPanelTitle = this.page.locator('[for="Panel title"] ~ textarea')
   btnPublish = this.page.locator('.editor-post-publish-panel__toggle')
   btnUpdated = this.page.locator('.components-button.editor-post-publish-button')
   btnPublishSB = this.page.locator('.editor-post-publish-button.editor-post-publish-button__button')
   imagePreview = this.page.locator('.panel-media-img')
   successMessage = this.page.locator('.components-notice.is-success.is-dismissible')
+  errorMessage = this.page.locator('.components-notice.is-error')
   inputHeadline = this.page.locator('[for="Headline"] ~ textarea')
   inputKicker = this.page.locator('[for="Kicker"] ~ textarea')
   options = this.page.locator('.edit-post-header__settings [aria-label="Options"]')
@@ -33,6 +34,7 @@ export class addGooglePanelPage {
   linkToPanel = this.page.locator('.row-title')
   inputByLine = this.page.locator('[for="Byline"] ~ textarea')
   linkShowcase = this.page.locator('.wp-menu-name >> text=News Showcase')
+  dropDownKindofPanel = this.page.locator('[for="Template"] ~ select')
 
 
   url = 'https://www.barrons.com/articles/brazils-colorful-fishing-village-trancoso-is-boomingjust-ask-anderson-cooper-01667225906'
@@ -66,6 +68,11 @@ export class addGooglePanelPage {
 
   async selectTemplate(value){
     await this.dropDownTemplate.selectOption(value)
+
+  }
+
+  async selectkindOfPanel(value){
+    await this.dropDownKindofPanel.first().selectOption(value)
 
   }
 
@@ -132,10 +139,6 @@ export class addGooglePanelPage {
 
   }
 
-  async fillPanelTitleRD(title){
-    await this.inputTitleRD.fill(title)
-
-  }
 
   async fillBullets(){
     const items = await this.page.locator('[data-input-type="ssBullet"]');
@@ -201,6 +204,12 @@ export class addGooglePanelPage {
   async verifyIfPanelIsPublished(){
     await this.successMessage.click();
     await expect(this.successMessage).toBeVisible;
+
+  }
+
+  async verifyErrorMessage(){
+    await expect(this.errorMessage).toBeVisible;
+    await expect(this.errorMessage).toContainText('failed');
 
   }
 

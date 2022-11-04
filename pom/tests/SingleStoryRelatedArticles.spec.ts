@@ -181,6 +181,18 @@ test.describe.parallel('Single Story Related articles', () => {
        
   })
 
-  
+  test.only('@NS Create Panel Single Story Related articles, without out title.', async ({ page }) => {
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('relatedArticle')
+    await AddPanel.fillSummary()
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.publishPanel()
+    await AddPanel.verifyIfPanelIsPublished()
+       
+  })
 
 })
