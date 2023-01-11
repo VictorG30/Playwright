@@ -11,8 +11,8 @@ export class loginPage {
 
   constructor(public readonly page: Page) { }
 
-  async gotoURL() {
-    await this.page.goto(process.env.URL)
+  async gotoURL(url=process.env.URL) {
+    await this.page.goto(url)
   }
 
   async Login(user='editor@test.com', password='editor'){

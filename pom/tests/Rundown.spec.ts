@@ -7,7 +7,7 @@ import { allGooglePanels } from './allGooglePanels.pom';
 import { hooks } from './hooks';
 import { allPreviewPanels } from './allPreviewPanels.pom';
 
-
+test.use({ viewport: { width: 1700, height: 900 } });
 test.describe.parallel('Rundown', () => {
   let hook
   let Login
@@ -45,6 +45,7 @@ test.describe.parallel('Rundown', () => {
   })
 
   test('@NS Create Panel Rundown, copy and paste url.', async ({ page }) => {
+    const title = 'RD, copy paste'
 
     await Login.gotoURL()
     await Login.Login()
@@ -52,7 +53,7 @@ test.describe.parallel('Rundown', () => {
     await AddPanel.dismissModal()
     await AddPanel.selectkindOfPanel('rundown')
     await AddPanel.fillURLandEnter()
-    await AddPanel.fillPanelTitle('Rundown Panel')
+    await AddPanel.fillPanelTitle(title)
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
        
@@ -60,7 +61,7 @@ test.describe.parallel('Rundown', () => {
 
   test('@NS Update Panel Rundown.', async ({ page }) => {
 
-    const title = 'RD, drag and drop'
+    const title = 'RD, drag and drop to update'
 
     await Login.gotoURL()
     await Login.Login()
@@ -82,7 +83,7 @@ test.describe.parallel('Rundown', () => {
 
   test('@NS Create Panel Rundown, adding item', async ({ page }) => {
 
-    const title = 'RD, drag and drop'
+    const title = 'RD, adding item'
 
     await Login.gotoURL()
     await Login.Login()
@@ -121,7 +122,7 @@ test.describe.parallel('Rundown', () => {
 
   test('@NS Kill Panel Rundown,', async ({ page }) => {
 
-    const title = 'RD, drag and drop'
+    const title = 'RD, to kill'
 
     await Login.gotoURL()
     await Login.Login()
@@ -137,7 +138,7 @@ test.describe.parallel('Rundown', () => {
 
   test('@NS Schedule panel Rundown.', async ({ page }) => {
 
-    const title = 'RD, drag and drop'
+    const title = 'RD, to shedule'
 
     await Login.gotoURL()
     await Login.Login()
@@ -172,7 +173,7 @@ test.describe.parallel('Rundown', () => {
        
   })
 
-  test.only('@NS Create Panel Rundown, without title.', async ({ page }) => {
+  test('@NS Create Panel Rundown, without title.', async ({ page }) => {
 
 
     await Login.gotoURL()
@@ -185,6 +186,34 @@ test.describe.parallel('Rundown', () => {
     await AddPanel.verifyErrorMessage()
        
   })
+
+  test('@NS Validate cropper.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectkindOfPanel('rundown')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.verifyCropperIsDisplayed(3)
+       
+  })
+
+  test('@NS Validate clear form.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectkindOfPanel('rundown')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.clearArticles()
+
+
+  })
+  
 
   
 

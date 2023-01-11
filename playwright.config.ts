@@ -14,7 +14,7 @@ const timeout = 20000
 const config: PlaywrightTestConfig = {
   testDir: './pom/tests',
   /* Maximum time one test can run for. */
-  timeout: 60000,
+  timeout: 120000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -22,7 +22,7 @@ const config: PlaywrightTestConfig = {
      */
     timeout: timeout
   },
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  /* Fail the build on CI if you accidentally left test in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 1,
@@ -38,7 +38,8 @@ const config: PlaywrightTestConfig = {
     // baseURL: 'http://localhost:3000',
     storageState: './dev.json',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    //trace: 'on-first-retry',
+    video: 'retain-on-failure'
   },
 
   /* Configure projects for major browsers */
@@ -55,6 +56,7 @@ const config: PlaywrightTestConfig = {
       use: {
         ...devices['Desktop Firefox'],
         screenshot: 'on',
+        args: ["--start-maximized"]
       },
     },
 

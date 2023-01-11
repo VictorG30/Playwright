@@ -9,7 +9,11 @@ export class hooks {
     this.page.on("console", message => {
       if (message.type() === "error") {
         //console.log(message.location().url)
-          expect(message.location().url).not.toContain('ncu-newspress-gns')            
+        //console.log(message.text())
+
+          expect(message.location().url).not.toContain('ncu-newspress-gns' || 'php')            
+          expect(message.text).not.toContain('ncu-newspress-gns' || 'php')  
+
       }
     })     
   }

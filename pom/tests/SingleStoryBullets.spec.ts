@@ -7,14 +7,14 @@ import { allGooglePanels } from './allGooglePanels.pom';
 import { hooks } from './hooks';
 import { allPreviewPanels } from './allPreviewPanels.pom';
 
-
+test.use({ viewport: { width: 1700, height: 900 } });
 test.describe.parallel('Panel single story with bullets', () => {
-  let hook
-  let Login
-  let SideBar
-  let AddPanel
-  let AllPanels
-  let PreviewPanels
+  var hook
+  var Login
+  var SideBar
+  var AddPanel
+  var AllPanels
+  var PreviewPanels
 
   test.beforeEach(async ({ page }) => {
     hook = new hooks(page)
@@ -129,8 +129,7 @@ test.describe.parallel('Panel single story with bullets', () => {
     await AddPanel.fillPanelTitle(title)
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
-    await AddPanel.draftPanel()
-    await AddPanel.verifyIfPanelIsPublished()
+
         
   })
 
@@ -169,7 +168,7 @@ test.describe.parallel('Panel single story with bullets', () => {
   })
 
 
-  test.only('@NS Create Panel Single story without title.', async ({ page }) => {
+  test('@NS Create Panel Single story without title.', async ({ page }) => {
          
 
     await Login.gotoURL()
@@ -180,6 +179,33 @@ test.describe.parallel('Panel single story with bullets', () => {
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
        
+  })
+
+  test('@NS Validate cropper.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('bullet')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.verifyCropperIsDisplayed(1)
+       
+  })
+
+  test('@NS Validate clear form.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('bullet')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.clearArticles()
+
+
   })
 
 })

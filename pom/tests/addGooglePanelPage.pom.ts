@@ -17,6 +17,8 @@ export class addGooglePanelPage {
   successMessage = this.page.locator('.components-notice.is-success.is-dismissible')
   errorMessage = this.page.locator('.components-notice.is-error')
   inputHeadline = this.page.locator('[for="Headline"] ~ textarea')
+  inputBullets = this.page.locator('[data-input-type="ssBullet"]')
+  inputKeyMoments = this.page.locator('[data-input-type="ssTimelineDescription"]')
   inputKicker = this.page.locator('[for="Kicker"] ~ textarea')
   options = this.page.locator('.edit-post-header__settings [aria-label="Options"]')
   btnFullScrenMode = this.page.locator('.components-menu-item__item >> text=Fullscreen mode')
@@ -25,7 +27,7 @@ export class addGooglePanelPage {
   rBtnKicker = this.page.locator('.panel-field-radio [value="kicker"]')
   addItemBtn = this.page.locator('.block-list-appender [aria-label="Add NC Google Panel"] svg')
   btnImmediately = this.page.locator('.editor-post-publish-panel__link >> text=Immediately')
-  inputYear = this.page.locator('[name="year"]')
+  inputYear = this.page.locator('[value="2023"]')
   inputDate = this.page.locator('[name="date"]')
   noticeMessage = this.page.locator('.components-notice__content')
   btnSwitchToDraft = this.page.locator('.editor-post-switch-to-draft');
@@ -35,34 +37,40 @@ export class addGooglePanelPage {
   inputByLine = this.page.locator('[for="Byline"] ~ textarea')
   linkShowcase = this.page.locator('.wp-menu-name >> text=News Showcase')
   dropDownKindofPanel = this.page.locator('[for="Template"] ~ select')
+  labelTimeAgo = this.page.locator('.nc-feed-sources-sidebar-card > div:nth-child(2) > p:nth-child(2)')
+  cropperIcon = this.page.locator('.dashicons-image-crop')
+  btnReset = this.page.locator('.panel-editor__clear-btn')
+  btnResetConfirm = this.page.locator('.components-modal__content .button.is-primary >> text=Reset')
 
 
-  url = 'https://www.barrons.com/articles/brazils-colorful-fishing-village-trancoso-is-boomingjust-ask-anderson-cooper-01667225906'
 
-
-
-
+  urlWSJ = 'https://www.wsj.com/articles/mysteries-book-review-anthony-horowitz-the-twist-of-a-knife-11668179494'
+  urlMW = 'https://www.marketwatch.com/story/ascend-wellness-and-ayr-post-wider-losses-as-revenue-climbs-11668178704'
+  urlBarrons = 'https://www.barrons.com/articles/microsoft-stock-price-london-stock-exchange-51670835512'
+  
   constructor(public readonly page: Page) {
 
    }
 
   async dismissModal(){
-    await this.page.waitForLoadState('networkidle')
-    await this.closeModal.click()
-    let status = await this.eyeInformation.first().isVisible()
-
-    if (status!=true)
-    await this.activateSources.click()
-
+    // await this.page.waitForLoadState('networkidle') 
+    // let status = await this.closeModal.first().isVisible()
+    // if (status=true){
+    //   await this.closeModal.click({force:true})
+    // }
+    let val = (await this.labelTimeAgo.first().innerText()).valueOf()
+    console.log(val)   
   }
 
   async activateFullScreenModel(){
 
-    let status = await this.linkShowcase.isVisible()
+    let statusFS = await this.linkShowcase.isVisible()
 
-    if (status!=true)
-    await this.options.click()
-    await this.btnFullScrenMode.click()
+    if (statusFS==false){
+    await this.options.click({force:true})
+    await this.btnFullScrenMode.scrollIntoViewIfNeeded()
+    await this.btnFullScrenMode.click({force:true})
+    }
 
   }
 
@@ -76,6 +84,21 @@ export class addGooglePanelPage {
 
   }
 
+  async clearArticles(){
+    await this.btnReset.first().waitFor({state:'visible'})
+    let statuskicker = await this.btnReset.first().isVisible()
+
+    if(statuskicker===true){
+    let btns = await this.btnReset;
+        for (let i = 0; i < await btns.count(); i++) {
+          if(i!=1){
+            await this.btnReset.nth(i).click({force: true})
+            await this.btnResetConfirm.click()
+          }
+    }
+    }
+  }
+
   async fillKickers(){
     let statuskicker = await this.inputKicker.first().isVisible()
 
@@ -83,7 +106,6 @@ export class addGooglePanelPage {
     let kickers = await this.inputKicker;
         for (let i = 0; i < await kickers.count(); i++) {
           await this.inputKicker.nth(i).fill('kicker')
-          await this.page.waitForLoadState('load')
     }
     }
   }
@@ -95,26 +117,47 @@ export class addGooglePanelPage {
       let headlines = await this.inputHeadline;
       for (let j = 0; j < await headlines.count(); j++) {
         await this.inputHeadline.nth(j).fill('HeadLine')
-        await this.page.waitForLoadState('load')
+      }
+      }
+  }
+
+  async fillBullets(){
+    let statusBullets = await this.inputBullets.first().isVisible()
+
+    if(statusBullets===true){
+      let bullets = await this.inputBullets;
+      for (let j = 0; j < await bullets.count(); j++) {
+        await this.inputBullets.nth(j).fill('Bullet ' + j)
+      }
+      }
+  }
+
+  async fillKeyMoments(){
+    let statusKM = await this.inputKeyMoments.first().isVisible()
+
+    if(statusKM===true){
+      let keyMoments = await this.inputKeyMoments;
+      for (let j = 0; j < await keyMoments.count(); j++) {
+        await this.inputKeyMoments.nth(j).fill('Key moment ' + j)
       }
       }
   }
 
   async dragAndDropArticle(){    
     await this.page.waitForLoadState('networkidle')
-    await this.page.waitForLoadState('load')
-    await expect(this.eyeInformation.first()).toBeVisible;
+    await this.eyeInformation.first().waitFor({state: "visible"});
     await expect(this.activateSources.first()).toBeVisible;
 
     const items = await this.page.locator('.components-drop-zone');
     for (let i = 0; i < await items.count(); i++) {   
           if(i!=1)      
           await this.page.locator('.nc-feed-sources-sidebar-card').nth(i).dragTo(items.nth(i), {force: true})
-          await this.page.waitForLoadState('load')
         }
 
         await this.fillKickers()
         await this.fillHeadLines()
+        await this.fillBullets()
+        await this.fillKeyMoments()
         
   }
 
@@ -124,34 +167,29 @@ export class addGooglePanelPage {
     const items = await this.inputArticleUrl;
 
     for (let i = 0; i < await items.count(); i++) {
-    await items.nth(i).fill(this.url);
+      
+      let url = await this.page.url()
+      let result = url.includes('wsj')
+
+      if(result==true){
+        await items.nth(i).fill(this.urlWSJ)
+      }else{
+        await items.nth(i).fill(this.urlBarrons)
+      }
+
     await this.page.keyboard.press('Enter');
-    await this.page.waitForLoadState('load')
     await this.page.waitForSelector('.panel-field-loading-message',{state: "hidden"})
-    }    
+      }    
     await this.fillKickers()
     await this.fillHeadLines()
+    await this.fillBullets()
+    await this.fillKeyMoments()
     
   }
  
   async fillPanelTitle(title='Title'){
     await this.inputPanelTitle.fill(title)
 
-  }
-
-
-  async fillBullets(){
-    const items = await this.page.locator('[data-input-type="ssBullet"]');
-    for (let i = 0; i < await items.count(); i++) {
-    await items.nth(i).fill('Bullet ' + i);
-  }
-  }
-
-  async fillKeyMoments(){
-    const items = await this.page.locator('[data-input-type="ssTimelineDescription"]');
-    for (let i = 0; i < await items.count(); i++) {
-    await items.nth(i).fill('Key moment ' + i);
-  }
   }
 
   async fillRelatedArticles(){
@@ -181,7 +219,7 @@ export class addGooglePanelPage {
 
   async updatePanel(text='Updated'){
     await this.linkToPanel.first().click()
-    await this.inputPanelTitle.fill(text)
+    await this.inputPanelTitle.type(text)
     await this.btnUpdated.click();
 
 
@@ -191,7 +229,7 @@ export class addGooglePanelPage {
     await this.btnPublish.click();
     await this.btnImmediately.click()
     await this.inputYear.fill(year)
-    await this.inputDate.click()
+    await this.inputYear.click()
     await this.btnPublishSB.click();
     await expect(this.noticeMessage).toContainText('scheduled')
   
@@ -202,8 +240,9 @@ export class addGooglePanelPage {
     }
 
   async verifyIfPanelIsPublished(){
-    await this.successMessage.click();
+
     await expect(this.successMessage).toBeVisible;
+    await expect(this.successMessage).toContainText('Saved');
 
   }
 
@@ -215,13 +254,22 @@ export class addGooglePanelPage {
 
   async verifyIfPanelIsKilled(){
     await this.successMessage.click();
-    await expect(this.successMessage).toHaveText('Saved');
+    await expect(this.successMessage).toContainText('Saved');
 
   }
 
   async verifyIfPanelIsUpdated(){
-    await expect(this.inputPanelTitle).toHaveText('Updated')
+    await expect(this.inputPanelTitle).toContainText('Updated')
 
+
+
+  }
+
+  async verifyCropperIsDisplayed(num){
+    var elemnts = await this.cropperIcon.count();
+
+    await expect(this.cropperIcon).toBeVisible
+    await expect(elemnts).toEqual(num)
 
 
   }

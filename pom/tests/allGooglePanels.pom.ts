@@ -8,18 +8,22 @@ export class allGooglePanels {
   selectBulkOptions = this.page.locator('#bulk-action-selector-top')
   btnApply = this.page.locator('#doaction')
   chkboxAll = this.page.locator('#cb-select-all-1')
-  column = this.page.locator('.panel_type.column-panel_type').first()
+  column = this.page.locator('.row-title').first()
   notFoundMsg = this.page.locator('text="Not Found"')
+  labelSubtitle = this.page.locator('.subtitle')
 
 
   constructor(public readonly page: Page) { }
 
   async searchPanels(text){
+    await this.page.waitForLoadState('networkidle')
     await this.inputSearchPanels.fill(text);
     await this.btnSearchPanels.click();
     await this.page.waitForLoadState('networkidle')
+    await this.page.waitForLoadState('domcontentloaded')
     await this.page.waitForLoadState('load')
-    await this.column.waitFor();
+    await expect(this.column).toContainText(text)
+
 
   }
 

@@ -7,8 +7,7 @@ import { allGooglePanels } from './allGooglePanels.pom';
 import { hooks } from './hooks';
 import { allPreviewPanels } from './allPreviewPanels.pom';
 
-
-
+test.use({ viewport: { width: 1700, height: 900 } });
 test.describe.parallel('Single Story Related articles', () => {
     let hook
     let Login
@@ -181,7 +180,7 @@ test.describe.parallel('Single Story Related articles', () => {
        
   })
 
-  test.only('@NS Create Panel Single Story Related articles, without out title.', async ({ page }) => {
+  test('@NS Create Panel Single Story Related articles, without title.', async ({ page }) => {
 
     await Login.gotoURL()
     await Login.Login()
@@ -193,6 +192,33 @@ test.describe.parallel('Single Story Related articles', () => {
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()
        
+  })
+
+  test('@NS Validate cropper.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('relatedArticle')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.verifyCropperIsDisplayed(3)
+       
+  })
+
+  test('@NS Validate clear form.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('relatedArticle')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.clearArticles()
+
+
   })
 
 })

@@ -8,7 +8,7 @@ import { hooks } from './hooks';
 import { allPreviewPanels } from './allPreviewPanels.pom';
 
 
-
+test.use({ viewport: { width: 1700, height: 900 } });
 test.describe.parallel('Single Story with Key Moments', () => {
   let hook
   let Login
@@ -176,7 +176,7 @@ test.describe.parallel('Single Story with Key Moments', () => {
   })
 
 
-  test.only('@NS Create Panel Single Story Key Moments, without title.', async ({ page }) => {
+  test('@NS Create Panel Single Story Key Moments, without title.', async ({ page }) => {
 
     await Login.gotoURL()
     await Login.Login()
@@ -189,4 +189,30 @@ test.describe.parallel('Single Story with Key Moments', () => {
        
   })
 
+  test('@NS Validate cropper.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('keyMoment')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.verifyCropperIsDisplayed(1)
+       
+  })
+
+  test('@NS Validate clear form.', async ({ page }) => {
+         
+
+    await Login.gotoURL()
+    await Login.Login()
+    await SideBar.goToAddPanel()
+    await AddPanel.dismissModal()
+    await AddPanel.selectTemplate('keyMoment')
+    await AddPanel.dragAndDropArticle()
+    await AddPanel.clearArticles()
+
+
+  })
 })
