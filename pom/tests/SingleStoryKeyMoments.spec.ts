@@ -29,7 +29,7 @@ test.describe.parallel('Single Story with Key Moments', () => {
               
   })
 
-  test('@NS Create Panel Single Story Key Moments, drag and drop.', async ({ page }) => {
+  test('@NS @PT Create Panel Single Story Key Moments, drag and drop.', async ({ page }) => {
 
     const title = 'Key moments drag and drop'
 
@@ -45,7 +45,7 @@ test.describe.parallel('Single Story with Key Moments', () => {
        
   })
 
-  test('@NS Create Panel Single Story Key Moments, copy and paste.', async ({ page }) => {
+  test('@NS Create Panel Single Story Key Moments, copy and paste. @smokeTest', async ({ page }) => {
 
     const title = 'Key moments copy and paste'
 
@@ -101,7 +101,7 @@ test.describe.parallel('Single Story with Key Moments', () => {
        
   })
 
-  test('@NS Delete Panel Key moments.', async ({ page }) => {
+  test('@NS @PT Delete Panel Key moments.', async ({ page }) => {
 
     var title = 'Key moment to delete'
 

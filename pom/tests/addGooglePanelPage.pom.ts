@@ -47,6 +47,7 @@ export class addGooglePanelPage {
   urlWSJ = 'https://www.wsj.com/articles/mysteries-book-review-anthony-horowitz-the-twist-of-a-knife-11668179494'
   urlMW = 'https://www.marketwatch.com/story/ascend-wellness-and-ayr-post-wider-losses-as-revenue-climbs-11668178704'
   urlBarrons = 'https://www.barrons.com/articles/microsoft-stock-price-london-stock-exchange-51670835512'
+  urlNY = 'https://nypost.com/2023/01/25/kellan-islas-7-killed-mom-emily-mauled-by-pack-of-dogs-in-idaho/'
   
   constructor(public readonly page: Page) {
 
@@ -152,6 +153,8 @@ export class addGooglePanelPage {
     for (let i = 0; i < await items.count(); i++) {   
           if(i!=1)      
           await this.page.locator('.nc-feed-sources-sidebar-card').nth(i).dragTo(items.nth(i), {force: true})
+          await this.page.waitForLoadState('networkidle')
+
         }
 
         await this.fillKickers()
@@ -169,13 +172,9 @@ export class addGooglePanelPage {
     for (let i = 0; i < await items.count(); i++) {
       
       let url = await this.page.url()
-      let result = url.includes('wsj')
-
-      if(result==true){
-        await items.nth(i).fill(this.urlWSJ)
-      }else{
+      if(url.includes('barrons'))
         await items.nth(i).fill(this.urlBarrons)
-      }
+      
 
     await this.page.keyboard.press('Enter');
     await this.page.waitForSelector('.panel-field-loading-message',{state: "hidden"})
@@ -225,7 +224,7 @@ export class addGooglePanelPage {
 
   }
   
-  async schedulePanel(year='2023'){
+  async schedulePanel(year='2024'){
     await this.btnPublish.click();
     await this.btnImmediately.click()
     await this.inputYear.fill(year)

@@ -28,7 +28,7 @@ test.describe.parallel('Rundown', () => {
               
   })
 
-  test('@NS Create Panel Rundown, drag and drop.', async ({ page }) => {
+  test('@NS @PT Create Panel Rundown, drag and drop.', async ({ page }) => {
 
     const title = 'RD, drag and drop'
 
@@ -44,7 +44,7 @@ test.describe.parallel('Rundown', () => {
        
   })
 
-  test('@NS Create Panel Rundown, copy and paste url.', async ({ page }) => {
+  test('@NS Create Panel Rundown, copy and paste url. @smokeTest', async ({ page }) => {
     const title = 'RD, copy paste'
 
     await Login.gotoURL()
@@ -98,7 +98,7 @@ test.describe.parallel('Rundown', () => {
        
   })
 
-  test('@NS Delete Rundown panel.', async ({ page }) => {
+  test('@NS @PT Delete Rundown panel.', async ({ page }) => {
 
     const title = 'Panel to delete Rundown'
 
@@ -153,7 +153,7 @@ test.describe.parallel('Rundown', () => {
        
   })
 
-  test('@NS Search Panel Rundown,', async ({ page }) => {
+  test('@NS Search Panel Rundown. @smokeTest', async ({ page }) => {
 
     const title = 'RD, preview'
 
@@ -162,7 +162,7 @@ test.describe.parallel('Rundown', () => {
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
     await AddPanel.selectkindOfPanel('rundown')
-    await AddPanel.dragAndDropArticle()
+    await AddPanel.fillURLandEnter()
     await AddPanel.fillPanelTitle(title)
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()

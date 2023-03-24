@@ -28,7 +28,7 @@ test.describe.parallel('Panel single story with bullets', () => {
               
   })
 
-  test('@NS Create Panel Single story bullets, drag and drop.', async ({ page }) => {
+  test('@NS @PT Create Panel Single story bullets, drag and drop.', async ({ page }) => {
          
     const title = 'SS Drag and Drop'
     await Login.gotoURL()
@@ -42,7 +42,7 @@ test.describe.parallel('Panel single story with bullets', () => {
        
   })
 
-  test('@NS Create Panel Single story bullets, copy and paste.', async ({ page }) => {
+  test('@NS Create Panel Single story bullets, copy and paste. @smokeTest', async ({ page }) => {
          
     const title = 'SS Copy and Paste'
     await Login.gotoURL()
@@ -95,7 +95,7 @@ test.describe.parallel('Panel single story with bullets', () => {
        
   })
 
-  test('@NS Delete Panel Single Story Bullets.', async ({ page }) => {
+  test('@NS @PT Delete Panel Single Story Bullets. @smokeTest', async ({ page }) => {
 
     const title= 'SS to delete'
 
@@ -103,7 +103,7 @@ test.describe.parallel('Panel single story with bullets', () => {
     await Login.Login()
     await SideBar.goToAddPanel()
     await AddPanel.dismissModal()
-    await AddPanel.dragAndDropArticle()
+    await AddPanel.fillURLandEnter()
     await AddPanel.fillPanelTitle(title)
     await AddPanel.publishPanel()
     await AddPanel.verifyIfPanelIsPublished()

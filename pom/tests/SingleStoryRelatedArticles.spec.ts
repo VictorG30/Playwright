@@ -28,7 +28,7 @@ test.describe.parallel('Single Story Related articles', () => {
                 
     })
 
-  test('@NS Create Panel Single Story Related articles, drag and drop.', async ({ page }) => {
+  test('@NS @PT Create Panel Single Story Related articles, drag and drop.', async ({ page }) => {
 
     const title = 'Related articles, drag and drop'
 
@@ -45,7 +45,7 @@ test.describe.parallel('Single Story Related articles', () => {
        
   })
 
-  test('@NS Create Single Story Related articles, copy and paste url.', async ({ page }) => {
+  test('@NS Create Single Story Related articles, copy and paste url. @smokeTest', async ({ page }) => {
 
     var title = 'Related article copy paste'
 
@@ -103,7 +103,7 @@ test.describe.parallel('Single Story Related articles', () => {
        
   })
 
-  test('@NS Delete Panel Single Story Related articles.', async ({ page }) => {
+  test('@NS @PT Delete Panel Single Story Related articles.', async ({ page }) => {
 
     const title = 'Related articles to delete'
 
