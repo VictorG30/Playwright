@@ -7,7 +7,7 @@ export class addGooglePanelPage {
 
   closeModal = this.page.locator('[aria-label="Close dialog"]')
   activateSources = this.page.locator('[aria-label="NC Feed Sources"]')
-  eyeInformation = this.page.locator('.show-data-modal-btn')
+  eyeInformation = this.page.locator('.dashicon.dashicons.dashicons-visibility.show-data-modal-btn')
   inputArticleUrl = this.page.locator('[for="Article URL"] ~ input')
   inputPanelTitle = this.page.locator('[for="Panel title"] ~ textarea')
   btnPublish = this.page.locator('.editor-post-publish-panel__toggle')
@@ -41,24 +41,28 @@ export class addGooglePanelPage {
   cropperIcon = this.page.locator('.dashicons-image-crop')
   btnReset = this.page.locator('.panel-editor__clear-btn')
   btnResetConfirm = this.page.locator('.components-modal__content .button.is-primary >> text=Reset')
-
+  inputSearchArticle = this.page.locator('.components-text-control__input')
+  btnSearchArticle = this.page.locator('.components-button.nc-search-button')
+  selectSearchArticle =  this.page.locator('#ncSidebarSearchBySelector')
+  nextArticlesPage = this.page.locator('[aria-label="Go to next page"]')
 
 
   urlWSJ = 'https://www.wsj.com/articles/mysteries-book-review-anthony-horowitz-the-twist-of-a-knife-11668179494'
   urlMW = 'https://www.marketwatch.com/story/ascend-wellness-and-ayr-post-wider-losses-as-revenue-climbs-11668178704'
   urlBarrons = 'https://www.barrons.com/articles/microsoft-stock-price-london-stock-exchange-51670835512'
   urlNY = 'https://nypost.com/2023/01/25/kellan-islas-7-killed-mom-emily-mauled-by-pack-of-dogs-in-idaho/'
+  urlMG = 'https://www.mansionglobal.com/articles/baseball-star-avisail-garcia-scores-miami-area-mansion-for-9-million-44ad7bab'
   
   constructor(public readonly page: Page) {
 
    }
 
   async dismissModal(){
-    // await this.page.waitForLoadState('networkidle') 
-    // let status = await this.closeModal.first().isVisible()
-    // if (status=true){
-    //   await this.closeModal.click({force:true})
-    // }
+    await this.page.waitForLoadState('networkidle') 
+    let status = await this.closeModal.first().isVisible()
+    if (status=true){
+      await this.closeModal.click({force:true})
+    }
     let val = (await this.labelTimeAgo.first().innerText()).valueOf()
     console.log(val)   
   }
@@ -144,16 +148,21 @@ export class addGooglePanelPage {
       }
   }
 
+  async waitArticles(){
+    await this.eyeInformation.first().waitFor({state: "visible"});
+
+  }
+
   async dragAndDropArticle(){    
     await this.page.waitForLoadState('networkidle')
-    await this.eyeInformation.first().waitFor({state: "visible"});
-    await expect(this.activateSources.first()).toBeVisible;
+    await this.waitArticles()
+    await expect(this.activateSources.first()).toBeVisible
 
     const items = await this.page.locator('.components-drop-zone');
     for (let i = 0; i < await items.count(); i++) {   
           if(i!=1)      
           await this.page.locator('.nc-feed-sources-sidebar-card').nth(i).dragTo(items.nth(i), {force: true})
-          await this.page.waitForLoadState('networkidle')
+          //await this.page.waitForLoadState('networkidle')
 
         }
 
@@ -174,6 +183,18 @@ export class addGooglePanelPage {
       let url = await this.page.url()
       if(url.includes('barrons'))
         await items.nth(i).fill(this.urlBarrons)
+      else if(url.includes('wsj'))   {
+        await items.nth(i).fill(this.urlWSJ)
+      }   
+      else if(url.includes('mw'))   {
+        await items.nth(i).fill(this.urlMW)
+      }         
+      else if(url.includes('mg'))   {
+        await items.nth(i).fill(this.urlMG)
+      }  
+        else {
+          await items.nth(i).fill(this.urlBarrons)
+        }
       
 
     await this.page.keyboard.press('Enter');
@@ -206,6 +227,7 @@ export class addGooglePanelPage {
 
   async addItem(){
     await this.dropDownTemplate.click();
+    await this.page.keyboard.press('Escape');
     await this.addItemBtn.click();
 
   }
@@ -218,7 +240,7 @@ export class addGooglePanelPage {
 
   async updatePanel(text='Updated'){
     await this.linkToPanel.first().click()
-    await this.inputPanelTitle.type(text)
+    await this.inputPanelTitle.fill(text)
     await this.btnUpdated.click();
 
 
@@ -281,6 +303,44 @@ export class addGooglePanelPage {
     //await this.successMessage.click();
 
 
+  }
+
+  async searchArticle(text){
+    await this.inputSearchArticle.fill('USA')
+    await this.btnSearchArticle.click()
+    await this.page.waitForLoadState('networkidle')
+  }
+
+  async searchArticleByURL(text){
+    await this.selectSearchArticle.selectOption('url')
+    let url = await this.page.url()
+    if(url.includes('barrons'))
+      await this.inputSearchArticle.fill(this.urlBarrons)
+    else if(url.includes('wsj'))   {
+      await this.inputSearchArticle.fill(this.urlWSJ)
+    }   
+    else if(url.includes('mw'))   {
+      await this.inputSearchArticle.fill(this.urlMW)
+    }  
+    else if(url.includes('mg'))   {
+      await this.inputSearchArticle.fill(this.urlMG)
+    }  
+      else {
+        await this.inputSearchArticle.fill(this.urlBarrons)
+      }
+    await this.btnSearchArticle.click()
+    await this.page.waitForLoadState('networkidle')
+  }
+
+
+  async validateArticle(){
+    await this.waitArticles()
+    await expect(this.eyeInformation).toBeVisible;
+
+  }
+
+  async goToNextArticlesPage(){
+    await this.nextArticlesPage.first().click()
   }
 
 

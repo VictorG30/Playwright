@@ -1,7 +1,7 @@
 {
   "name": "playwright",
   "config": {
-    "url":"https://newspress.dev.dowjones.io/barrons/wp-admin/"
+    "url": "https://newspress.dev.dowjones.io/mg/wp-admin/"
   },
   "version": "1.0.0",
   "description": "",
@@ -16,13 +16,14 @@
     "PT": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @PT --project='firefox' --repeat-each 1 --workers 3",
     "NSD": "URL=$npm_package_config_url npx playwright test .pom/tests --grep @NS --headed --project='firefox' --debug"
   },
-  "keywords": [], 
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.20.1"
+    "@playwright/test": "^1.32.2"
   },
   "dependencies": {
-    "otplib": "^12.0.1"
+    "otplib": "^12.0.1",
+    "playwright": "^1.32.1"
   }
 }
